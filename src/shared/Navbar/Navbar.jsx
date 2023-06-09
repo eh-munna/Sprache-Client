@@ -3,14 +3,15 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 // import { FaAlignLeft, FaAlignRight } from 'react-icons/fa';
 import { useContext, useState } from 'react';
 
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import 'react-tooltip/dist/react-tooltip.css';
 // import { Tooltip } from 'react-tooltip';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const { user, userLogOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -22,20 +23,20 @@ const Navbar = () => {
     });
   };
 
-  // const userNotification = () => {
-  //   if (!user) {
-  //     toast.warn('You are not logged in', {
-  //       position: 'top-center',
-  //       autoClose: 2000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: 'light',
-  //     });
-  //   }
-  // };
+  const userNotification = () => {
+    if (!user) {
+      toast.warn('You are not logged in', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    }
+  };
 
   return (
     <nav className=" bg-[#f8f9fa] shadow-md sticky top-0 rounded-b-md pb-2 md:pb-0">
@@ -221,7 +222,7 @@ const Navbar = () => {
                     Add Toy
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={userNotification}>
                   <NavLink
                     to="/my-toys"
                     className={({ isActive }) =>
@@ -324,8 +325,8 @@ const Navbar = () => {
           )}
         </ul>
       </div>
-      {/* <ToastContainer />
-      <Tooltip id="my-tooltip" /> */}
+      <ToastContainer />
+      {/* <Tooltip id="my-tooltip" /> */}
     </nav>
   );
 };
