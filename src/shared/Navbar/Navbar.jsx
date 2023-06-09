@@ -11,7 +11,6 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
   const { user, userLogOut } = useContext(AuthContext);
   const navigate = useNavigate();
 

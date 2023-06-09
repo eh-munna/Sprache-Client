@@ -2,10 +2,11 @@ import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitleChange from '../../TitleChange/TitleChange';
-
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const SignIn = () => {
-  useTitleChange('Legowelt || Sign In');
+  useTitleChange('Sprache || Sign In');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const { userSignIn, googlePopUp } = useContext(AuthContext);
@@ -85,15 +86,22 @@ const SignIn = () => {
             className="w-full md:w-2/3 placeholder:text-[#00b4d8] border-b border-b-[#0077b6] focus:outline-none focus:border-b-[#00b4d8] text-[#0077b6] p-2"
           />
         </div>
-        <div>
+        <div className="flex relative">
           <input
             required
-            type="text"
+            type={!showPassword ? 'password' : 'text'}
             name="password"
             id=""
             placeholder="Your Password"
             className="w-full md:w-2/3 placeholder:text-[#00b4d8] border-b border-b-[#0077b6] focus:outline-none focus:border-b-[#00b4d8] text-[#0077b6] p-2"
           />
+
+          <span
+            onClick={() => setShowPassword(!showPassword)}
+            className="cursor-pointer absolute right-0 top-1/3 md:right-1/3 md:top-1/3 mr-2"
+          >
+            {!showPassword ? <FaEye /> : <FaEyeSlash />}
+          </span>
         </div>
 
         <div>
