@@ -8,7 +8,7 @@ import {
   signOut,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import app from '../firebase/firebase_config';
+import app from '../firebase/firebase.config';
 
 // auth context for authentication
 
