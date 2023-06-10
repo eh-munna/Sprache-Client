@@ -71,8 +71,8 @@ const Footer = () => {
                   to="/"
                   className={({ isActive }) =>
                     isActive
-                      ? `border-b p-1 border-b-[#5a189a] text-[#4361ee]`
-                      : `border-0 text-[#4361ee]`
+                      ? `border-b pb-1 border-b-[#5a189a] text-[#4361ee]`
+                      : `border-0 pb-1 text-[#4361ee]`
                   }
                 >
                   Home
@@ -81,11 +81,11 @@ const Footer = () => {
 
               <li className="text-[#0077b6] font-medium font-[roboto] p-1">
                 <NavLink
-                  to="/all-toys"
+                  to="/instructors"
                   className={({ isActive }) =>
                     isActive
-                      ? `border-b p-1 border-b-[#5a189a] text-[#4361ee]`
-                      : `border-0 text-[#4361ee]`
+                      ? `border-b pb-1 border-b-[#5a189a] text-[#4361ee]`
+                      : `border-0 pb-1 text-[#4361ee]`
                   }
                 >
                   Instructors

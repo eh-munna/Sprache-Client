@@ -51,7 +51,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/all-toys"
+          to="/instructors"
           className={({ isActive }) =>
             isActive
               ? `border-b border-b-[#4361ee] text-[#5a189a] p-1`
