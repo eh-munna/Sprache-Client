@@ -1,18 +1,15 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-
-// import { FaAlignLeft, FaAlignRight } from 'react-icons/fa';
 import { useContext, useState } from 'react';
-
-import { toast } from 'react-toastify';
-
-// import 'react-tooltip/dist/react-tooltip.css';
-// import { Tooltip } from 'react-tooltip';
+// import { toast } from 'react-toastify';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaAlignLeft, FaAlignRight } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const { user, userLogOut } = useContext(AuthContext);
+  const { user, userLogOut, handleInput, setHandleInput } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   // signing out user
@@ -23,20 +20,20 @@ const Navbar = () => {
     });
   };
 
-  const userNotification = () => {
-    if (!user) {
-      toast.warn('You are not logged in', {
-        position: 'top-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
-    }
-  };
+  // const userNotification = () => {
+  //   if (!user) {
+  //     toast.warn('You are not logged in', {
+  //       position: 'top-center',
+  //       autoClose: 2000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: 'light',
+  //     });
+  //   }
+  // };
 
   const commonOptions = (
     <>
@@ -123,7 +120,13 @@ const Navbar = () => {
         </ul>
         {/* mobile menu */}
         <div className="md:hidden pt-2">
-          <button className=" md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className=" md:hidden"
+            onClick={() => {
+              setIsOpen(!isOpen);
+              setHandleInput(!handleInput);
+            }}
+          >
             <>
               {isOpen ? (
                 <FaAlignRight className="text-[#5a189a] w-5 h-5" />
@@ -269,7 +272,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* <Tooltip id="my-tooltip" /> */}
+      <Tooltip id="my-tooltip" />
     </nav>
   );
 };

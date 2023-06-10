@@ -19,6 +19,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [handleInput, setHandleInput] = useState(true);
 
   // creating user with email and password
 
@@ -55,6 +56,8 @@ const AuthProvider = ({ children }) => {
     userSignIn,
     userLogOut,
     loading,
+    handleInput,
+    setHandleInput,
   };
 
   // managing auth state
