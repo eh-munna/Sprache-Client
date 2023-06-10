@@ -109,11 +109,6 @@ const Navbar = () => {
       <div className="relative container px-1 md:px-3 mx-auto flex justify-between items-center">
         <ul className="flex flex-col md:flex-row items-center justify-between gap-1 md:gap-3 z-10">
           {/* <ul className=""> */}
-          <li>
-            <Link to="/">
-              {/* <img className="max-w-full h-12 md:h-16" src={logo} alt="" /> */}
-            </Link>
-          </li>
           <li className="text-[#5a189a] font-bold italic font-[archivo] md:text-2xl">
             <Link to="/">Sprache </Link>
           </li>
