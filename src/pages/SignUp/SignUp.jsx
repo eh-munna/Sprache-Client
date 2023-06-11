@@ -12,7 +12,6 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState,
     getValues,
@@ -22,7 +21,7 @@ const SignUp = () => {
   useTitleChange('Sprache || Sign Up');
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
-  const { createUser, userLogOut, handleInput } = useContext(AuthContext);
+  const { createUser, userLogOut } = useContext(AuthContext);
   const navigation = useNavigate();
 
   // creating a new user with email and password
@@ -30,22 +29,49 @@ const SignUp = () => {
     const { name, email, password, confirmPassword, photoUrl } = data;
 
     if (email && password) {
+      if (password !== confirmPassword) {
+        toast.error('Password not matched', {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+        setError(true);
+        return;
+      }
       createUser(email, password)
         .then((result) => {
           const createdUser = result.user;
           userUpdate(createdUser, name, photoUrl);
-          toast.success('User is successfully created', {
-            position: 'top-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          });
-          userSignOut();
-          navigation('/sign-in');
+
+          // storing user information to database
+          const savedUser = { name: name, email: email };
+          fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                toast.success('User is successfully created', {
+                  position: 'top-center',
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: 'light',
+                });
+                userSignOut();
+                navigation('/sign-in');
+              }
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -104,6 +130,8 @@ const SignUp = () => {
         onSubmit={handleSubmit(userSignUp)}
         className="w-10/12 mx-auto md:mx-0 md:w-10/12 font-[roboto] space-y-4"
       >
+        {/* name-field */}
+
         <div>
           <input
             type="text"
@@ -113,18 +141,22 @@ const SignUp = () => {
           />
         </div>
         {errors.name && <p className="text-red-500">This field is required</p>}
+
+        {/* email-field */}
+
         <div>
           <input
-            required
             type="email"
-            {...register('email')}
+            {...register('email', { required: true })}
             placeholder="Your Email"
             className="w-full md:w-2/3 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
           />
         </div>
-        <div className={`flex relative ${handleInput ? '-z-10' : 'z-0 '}`}>
+
+        {/* password-filed */}
+
+        <div className={`flex relative `}>
           <input
-            required
             type={!showPassword ? 'password' : 'text'}
             {...register('password', {
               required: true,
@@ -147,18 +179,13 @@ const SignUp = () => {
             )}
           </span>
         </div>
-        <div className={`flex relative ${handleInput ? '-z-10' : 'z-0 '}`}>
+
+        {/* confirm-password-field */}
+
+        <div className={`flex relative `}>
           <input
-            required
-            type={!showPassword ? 'password' : 'text'}
-            // {...register('confirmPassword', {
-            //   required: true,
-            //   validate: (val: string) => {
-            //     if (watch('password') != val) {
-            //       return 'Passwords do not match';
-            //     }
-            //   },
-            // })}
+            type={!showPassword2 ? 'password' : 'text'}
+            {...register('confirmPassword', { required: true })}
             placeholder="Confirm Your Password"
             className="w-full md:w-2/3 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2 pr-8"
           />
@@ -174,6 +201,9 @@ const SignUp = () => {
             )}
           </span>
         </div>
+
+        {/* password-related-error-handling */}
+
         <>
           {errors.password?.type === 'required' && (
             <p className="text-red-500">Please provide password</p>
@@ -192,15 +222,20 @@ const SignUp = () => {
             </p>
           )}
         </>
+
+        {/* providing-user-photo-url */}
+
         <div>
           <input
-            required
             type="url"
-            {...register('photoUrl')}
+            {...register('photoUrl', { required: true })}
             placeholder="Please enter a valid URL"
             className="w-full md:w-2/3 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
           />
         </div>
+
+        {/* submitting-form */}
+
         <div>
           <button
             type="submit"
@@ -209,6 +244,9 @@ const SignUp = () => {
             Sign Up
           </button>
         </div>
+
+        {/* swapping-to-register */}
+
         <div>
           <p className="text-[#4361ee] font-[roboto]">
             Already have an account?{' '}

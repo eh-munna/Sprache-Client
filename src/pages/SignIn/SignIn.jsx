@@ -9,7 +9,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const { userSignIn, googlePopUp, handleInput } = useContext(AuthContext);
+  const { userSignIn, googlePopUp } = useContext(AuthContext);
 
   const location = useLocation();
   const { from } = location.state || { from: { pathname: '/' } };
@@ -86,7 +86,7 @@ const SignIn = () => {
               className="w-full md:w-2/3 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
           </div>
-          <div className={`flex relative ${handleInput ? '-z-10' : 'z-0 '}`}>
+          <div className={`flex relative`}>
             <input
               required
               type={!showPassword ? 'password' : 'text'}

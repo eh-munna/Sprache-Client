@@ -8,8 +8,7 @@ import { FaAlignLeft, FaAlignRight } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const { user, userLogOut, handleInput, setHandleInput } =
-    useContext(AuthContext);
+  const { user, userLogOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // signing out user
@@ -107,7 +106,7 @@ const Navbar = () => {
             className=" md:hidden"
             onClick={() => {
               setIsOpen(!isOpen);
-              setHandleInput(!handleInput);
+              // setHandleInput(true);
             }}
           >
             <>

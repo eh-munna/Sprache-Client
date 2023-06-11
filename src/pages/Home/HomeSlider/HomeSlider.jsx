@@ -13,7 +13,6 @@ const images = [
 
 const HomeSlider = () => {
   const [opacities, setOpacities] = useState([]);
-  const { handleInput } = useContext(AuthContext);
 
   const [sliderRef] = useKeenSlider({
     slides: images.length,
@@ -27,7 +26,7 @@ const HomeSlider = () => {
   });
 
   return (
-    <div ref={sliderRef} className={`fader ${handleInput ? '-z-10' : 'z-0'}`}>
+    <div ref={sliderRef} className={`fader `}>
       {images.map((src, idx) => (
         <div
           key={idx}
