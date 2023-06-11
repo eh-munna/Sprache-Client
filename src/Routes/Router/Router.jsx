@@ -9,6 +9,7 @@ import Dashboard from '../../pages/Dashboard/Dashboard';
 import DashboardLayout from '../../layouts/DashboardLayout';
 import MySelectedClasses from '../../pages/Dashboard/MySelectedClasses/MySelectedClasses';
 import MyEnrolledClasses from '../../pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses';
+import AllUsers from '../../pages/Dashboard/AllUsers/AllUsers';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/my-enrolled-classes',
         element: <MyEnrolledClasses />,
+      },
+      {
+        path: '/dashboard/all-users',
+        element: <AllUsers />,
       },
     ],
   },
