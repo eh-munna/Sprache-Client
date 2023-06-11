@@ -122,9 +122,7 @@ const SignUp = () => {
             className="w-full md:w-2/3 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
           />
         </div>
-        <div
-          className={`flex relative ${handleInput ? 'z-0' : '-z-10 md:z-0'}`}
-        >
+        <div className={`flex relative ${handleInput ? '-z-10' : 'z-0 '}`}>
           <input
             required
             type={!showPassword ? 'password' : 'text'}
@@ -149,9 +147,7 @@ const SignUp = () => {
             )}
           </span>
         </div>
-        <div
-          className={`flex relative ${handleInput ? 'z-0' : '-z-10 md:z-0'}`}
-        >
+        <div className={`flex relative ${handleInput ? '-z-10' : 'z-0 '}`}>
           <input
             required
             type={!showPassword ? 'password' : 'text'}

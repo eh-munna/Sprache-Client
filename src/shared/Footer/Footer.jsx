@@ -1,5 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLocationArrow,
+  FaPhone,
+  FaSearchLocation,
+  FaTwitter,
+  FaYoutube,
+} from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
@@ -65,13 +73,13 @@ const Footer = () => {
             <h3 className="text-[#5a189a] font-bold font-[archivo] text-xl md:text-2xl pb-1 md:pb-4">
               Explore
             </h3>
-            <ul className="flex flex-row md:flex-col gap-1 md:gap-3 md:justify-center">
+            <ul className="flex flex-wrap flex-row md:flex-col gap-1 md:gap-3 md:justify-center">
               <li className="text-[#0077b6] font-medium font-[roboto] p-1">
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
                     isActive
-                      ? `border-b pb-1 border-b-[#5a189a] text-[#4361ee]`
+                      ? `border-b pb-1 border-b-[#4361ee] text-[#5a189a]`
                       : `border-0 pb-1 text-[#4361ee]`
                   }
                 >
@@ -84,57 +92,41 @@ const Footer = () => {
                   to="/instructors"
                   className={({ isActive }) =>
                     isActive
-                      ? `border-b pb-1 border-b-[#5a189a] text-[#4361ee]`
+                      ? `border-b pb-1 border-b-[#4361ee] text-[#5a189a]`
                       : `border-0 pb-1 text-[#4361ee]`
                   }
                 >
                   Instructors
                 </NavLink>
               </li>
+              <li className="text-[#0077b6] font-medium font-[roboto] p-1">
+                <NavLink
+                  to="/classes"
+                  className={({ isActive }) =>
+                    isActive
+                      ? `border-b pb-1 border-b-[#4361ee] text-[#5a189a]`
+                      : `border-0 pb-1 text-[#4361ee]`
+                  }
+                >
+                  Classes
+                </NavLink>
+              </li>
               {user && (
                 <>
                   <li className="text-[#0077b6] font-medium font-[roboto] p-1">
                     <NavLink
-                      to="/add-toy"
+                      to="/dashboard"
                       className={({ isActive }) =>
                         isActive
-                          ? `border-b p-1 border-b-[#4361ee] text-[#5a189a]`
-                          : `border-0 text-[#5a189a]`
+                          ? `border-b pb-1 border-b-[#4361ee] text-[#5a189a]`
+                          : `border-0 pb-1 text-[#4361ee]`
                       }
                     >
-                      Add Toy
-                    </NavLink>
-                  </li>
-
-                  <li
-                    onClick={userNotification}
-                    className="text-[#0077b6] font-medium font-[roboto] p-1"
-                  >
-                    <NavLink
-                      to="/my-toys"
-                      className={({ isActive }) =>
-                        isActive
-                          ? `border-b p-1 border-b-[#5a189a] text-[#4361ee]`
-                          : `border-0 text-[#4361ee]`
-                      }
-                    >
-                      My Toys
+                      Dashboard
                     </NavLink>
                   </li>
                 </>
               )}
-              <li className="text-[#0077b6] font-medium font-[roboto] p-1">
-                <NavLink
-                  to="/blog"
-                  className={({ isActive }) =>
-                    isActive
-                      ? `border-b p-1 border-b-[#5a189a] text-[#4361ee]`
-                      : `border-0 text-[#4361ee]`
-                  }
-                >
-                  Blogs
-                </NavLink>
-              </li>
             </ul>
           </div>
 
@@ -144,11 +136,11 @@ const Footer = () => {
               Find us
             </h3>
             <ul className="flex flex-col  gap-1 justify-center">
-              <li className="text-[#4361ee] font-medium font-[roboto] p-1">
-                Oberfeldstraße 123
+              <li className="text-[#4361ee] font-medium font-[roboto] p-1 flex gap-5 items-center">
+                <FaPhone /> +4917663633848
               </li>
-              <li className="text-[#4361ee] font-medium font-[roboto] p-1">
-                12345 Berlin
+              <li className="text-[#4361ee] font-medium font-[roboto] p-1 flex gap-5 items-center">
+                <FaLocationArrow /> Oberfeldstraße 00, 12345 Berlin
               </li>
             </ul>
           </div>

@@ -42,7 +42,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? `border-b border-b-[#4361ee] text-[#5a189a] p-1`
+              ? `border-b border-b-[#5a189a] text-[#4361ee] p-1`
               : `border-0 text-[#5a189a] p-1`
           }
         >
@@ -54,58 +54,46 @@ const Navbar = () => {
           to="/instructors"
           className={({ isActive }) =>
             isActive
-              ? `border-b border-b-[#4361ee] text-[#5a189a] p-1`
+              ? `border-b border-b-[#5a189a] text-[#4361ee] p-1`
               : `border-0 text-[#5a189a] p-1`
           }
         >
           Instructors
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/classes"
+          className={({ isActive }) =>
+            isActive
+              ? `border-b border-b-[#5a189a] text-[#4361ee] p-1`
+              : `border-0 text-[#5a189a] p-1`
+          }
+        >
+          Classes
+        </NavLink>
+      </li>
       {user && (
         <>
           <li>
             <NavLink
-              to="/add-toy"
+              to="/dashboard"
               className={({ isActive }) =>
                 isActive
-                  ? `border-b border-b-[#4361ee] text-[#5a189a] p-1`
+                  ? `border-b border-b-[#5a189a] text-[#4361ee] p-1`
                   : `border-0 text-[#5a189a] p-1`
               }
             >
-              Add Toy
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/my-toys"
-              className={({ isActive }) =>
-                isActive
-                  ? `border-b border-b-[#4361ee] text-[#5a189a] p-1`
-                  : `border-0 text-[#5a189a] p-1`
-              }
-            >
-              My Toys
+              Dashboard
             </NavLink>
           </li>
         </>
       )}
-      <li>
-        <NavLink
-          to="/blog"
-          className={({ isActive }) =>
-            isActive
-              ? `border-b border-b-[#4361ee] text-[#5a189a] p-1`
-              : `border-0 text-[#5a189a] p-1`
-          }
-        >
-          Blogs
-        </NavLink>
-      </li>
     </>
   );
 
   return (
-    <nav className="bg-[#f8f9fa] shadow-md sticky top-0 rounded-b-md pb-2 md:py-2">
+    <nav className="bg-[#f8f9fa] shadow-md sticky top-0 rounded-b-md pb-2 md:py-2 z-20">
       <div className="relative container px-1 md:px-3 mx-auto flex justify-between items-center">
         <ul className="flex flex-col md:flex-row items-center justify-between gap-1 md:gap-3 z-10">
           {/* <ul className=""> */}
@@ -134,7 +122,7 @@ const Navbar = () => {
             className={
               isOpen
                 ? `w-fit right-0 -top-72 absolute md:relative flex flex-col md:flex-row justify-center gap-4 md:gap-3 font-medium z-30`
-                : `w-full absolute right-0 md:shadow-none shadow-lg top-12 md:top-0 text-right bg-[#f8f9fa] md:bg-transparent rounded-b-md md:relative flex flex-col md:flex-row justify-center gap-3 md:gap-3 font-medium p-3 z-30`
+                : `w-full absolute right-0 md:shadow-none shadow-lg top-8 md:top-0 text-right bg-[#f8f9fa] md:bg-transparent rounded-b-md md:relative flex flex-col md:flex-row justify-center gap-3 md:gap-3 font-medium p-3 z-30`
             }
           >
             {commonOptions}
