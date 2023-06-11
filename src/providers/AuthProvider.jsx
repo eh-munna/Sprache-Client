@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import app from '../firebase/firebase.config';
+import axios from 'axios';
 
 // auth context for authentication
 
@@ -65,7 +66,18 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
-      setLoading(false);
+      if (loggedUser) {
+        axios
+          .post(`http://localhost:5000/jwt`, {
+            email: loggedUser.email,
+          })
+          .then((response) => {
+            localStorage.setItem('user-access-token', response.data.token);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem('user-access-token');
+      }
     });
     return () => {
       unsubscribe();
