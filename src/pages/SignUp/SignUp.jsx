@@ -8,6 +8,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const SignUp = () => {
+  useTitleChange('Sprache | Sign Up');
   const [error, setError] = useState(false);
   const {
     register,
@@ -17,8 +18,6 @@ const SignUp = () => {
     getValues,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
-
-  useTitleChange('Sprache || Sign Up');
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const { createUser, userLogOut } = useContext(AuthContext);

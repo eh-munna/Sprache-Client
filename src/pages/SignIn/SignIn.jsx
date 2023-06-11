@@ -3,8 +3,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitleChange from '../../TitleChange/TitleChange';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useForm } from 'react-hook-form';
 const SignIn = () => {
-  useTitleChange('Sprache || Sign In');
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState,
+    getValues,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm();
+
+  useTitleChange('Sprache | Sign In');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -14,19 +24,16 @@ const SignIn = () => {
   const location = useLocation();
   const { from } = location.state || { from: { pathname: '/' } };
 
-  const userLogIn = (event) => {
-    event.preventDefault();
+  const userLogIn = (data) => {
+    const { email, password } = data;
+
     setError('');
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
 
     // signing in a new user with email password
 
     userSignIn(email, password)
       .then((userCredential) => {
         const loggedUser = userCredential.user;
-        form.reset();
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -48,7 +55,22 @@ const SignIn = () => {
     googlePopUp()
       .then((result) => {
         const loggedUser = result.user;
-        navigate(from, { replace: true });
+
+        const savedUser = {
+          name: loggedUser?.displayName,
+          email: loggedUser?.email,
+        };
+        fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              navigate(from, { replace: true });
+            }
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -74,23 +96,26 @@ const SignIn = () => {
           {error}
         </p>
         <form
-          onSubmit={userLogIn}
+          onSubmit={handleSubmit(userLogIn)}
           className="w-10/12 mx-auto md:mx-0 md:w-10/12 font-[roboto] space-y-4"
         >
           <div>
             <input
-              required
               type="email"
-              name="email"
+              {...register('email', { required: true })}
               placeholder="Your Email"
               className="w-full md:w-2/3 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
           </div>
+          {errors.email && (
+            <p className="text-red-500">This field is required</p>
+          )}
           <div className={`flex relative`}>
             <input
-              required
               type={!showPassword ? 'password' : 'text'}
-              name="password"
+              {...register('password', {
+                required: true,
+              })}
               placeholder="Your Password"
               className="w-full md:w-2/3 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2 pr-6"
             />
@@ -106,6 +131,9 @@ const SignIn = () => {
               )}
             </span>
           </div>
+          {errors.password?.type === 'required' && (
+            <p className="text-red-500">Please provide password</p>
+          )}
 
           <div>
             <button
