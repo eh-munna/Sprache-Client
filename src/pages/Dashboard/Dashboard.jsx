@@ -1,7 +1,9 @@
+import Analytics from './Analytics/Analytics';
+
 const Dashboard = () => {
   return (
     <div>
-      <div className="">here is the main board</div>
+      <Analytics />
     </div>
   );
 };
