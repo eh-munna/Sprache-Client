@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
+import useLoadUsers from '../../../hooks/useLoadUsers';
 
 const Analytics = () => {
   const { user } = useContext(AuthContext);
+  const [users] = useLoadUsers();
 
   // TODO: ADMIN...
 
@@ -29,7 +31,7 @@ const Analytics = () => {
               <h2 className="text-2xl  text-center font-[archivo]">
                 Total Users
               </h2>
-              <p className="pt-8 font-[roboto] text-xl">9</p>
+              <p className="pt-8 font-[roboto] text-xl">{users.length}</p>
             </div>
           </div>
         </>

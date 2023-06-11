@@ -1,12 +1,16 @@
 import { Link, Outlet } from 'react-router-dom';
-import Navbar from '../shared/Navbar/Navbar';
+// import Navbar from '../shared/Navbar/Navbar';
 import {
   FaBook,
   FaBookOpen,
+  FaBookReader,
   FaHome,
   FaPeopleArrows,
   FaSchool,
   FaServer,
+  FaTools,
+  FaUserAlt,
+  FaUsers,
 } from 'react-icons/fa';
 
 const DashboardLayout = () => {
@@ -42,14 +46,14 @@ const DashboardLayout = () => {
             {isAdmin ? (
               <>
                 <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
-                  <FaBook />
+                  <FaBookReader />
                   <Link to="/dashboard/my-selected-classes">
                     Manage Classes
                   </Link>
                 </li>
                 <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
-                  <FaBookOpen />
-                  <Link to="/dashboard/all-users">All Users</Link>
+                  <FaUsers />
+                  <Link to="/dashboard/manage-users">Manage Users</Link>
                 </li>
               </>
             ) : (
