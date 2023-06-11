@@ -59,6 +59,9 @@ const SignIn = () => {
         const savedUser = {
           name: loggedUser?.displayName,
           email: loggedUser?.email,
+          studentRole: true,
+          adminRole: false,
+          instructorRole: false,
         };
         fetch('http://localhost:5000/users', {
           method: 'POST',

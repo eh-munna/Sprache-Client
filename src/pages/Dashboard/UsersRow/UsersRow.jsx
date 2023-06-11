@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const UsersRow = ({ user, idx, refetch }) => {
   const [isAdminDisabled, setAdminDisabled] = useState(false);
   const [isInstructorDisabled, setInstructorDisabled] = useState(false);
-  const { _id, name, email, role } = user;
+  const { _id, name, adminRole, instructorRole } = user;
 
   const makeAdmin = (id) => {
     fetch(`http://localhost:5000/users/admin/${id}`, {
@@ -30,8 +30,26 @@ const UsersRow = ({ user, idx, refetch }) => {
       });
     setAdminDisabled(true);
   };
-  const makeInstructor = (_id) => {
-    console.log(_id);
+  const makeInstructor = (id) => {
+    fetch(`http://localhost:5000/users/instructor/${id}`, {
+      method: 'PATCH',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          toast.success(`${name} is an instructor now`, {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        }
+      });
     setInstructorDisabled(true);
   };
 
@@ -49,7 +67,7 @@ const UsersRow = ({ user, idx, refetch }) => {
           disabled={isAdminDisabled}
           className="font-[roboto] bg-[#7371fc] rounded-full py-1 px-2 md:px-4 hover:bg-[#3c096c] text-sm md:text-base text-[#fff]"
         >
-          {role === 'admin' ? 'Admin' : 'Make Admin'}
+          {adminRole ? 'Admin' : 'Make Admin'}
         </button>
 
         <button
@@ -57,7 +75,7 @@ const UsersRow = ({ user, idx, refetch }) => {
           disabled={isInstructorDisabled}
           className="font-[roboto] bg-[#7371fc] rounded-full py-1 px-2 md:px-4 hover:bg-[#3c096c] text-sm md:text-base text-[#fff]"
         >
-          {role === 'instructor' ? 'Instructor' : 'Make Instructor'}
+          {instructorRole ? 'Instructor' : 'Make Instructor'}
         </button>
       </div>
     </div>

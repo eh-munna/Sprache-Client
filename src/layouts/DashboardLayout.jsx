@@ -8,8 +8,6 @@ import {
   FaPeopleArrows,
   FaSchool,
   FaServer,
-  FaTools,
-  FaUserAlt,
   FaUsers,
 } from 'react-icons/fa';
 

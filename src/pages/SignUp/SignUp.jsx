@@ -48,7 +48,13 @@ const SignUp = () => {
           userUpdate(createdUser, name, photoUrl);
 
           // storing user information to database
-          const savedUser = { name: name, email: email };
+          const savedUser = {
+            name: name,
+            email: email,
+            studentRole: true,
+            adminRole: false,
+            instructorRole: false,
+          };
           fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
