@@ -1,5 +1,6 @@
 import useLoadUsers from '../../../hooks/useLoadUsers';
 import useAuth from '../../../hooks/useAuth';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Analytics = () => {
   const { user } = useAuth();
@@ -8,7 +9,7 @@ const Analytics = () => {
 
   // TODO: ADMIN...
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="">

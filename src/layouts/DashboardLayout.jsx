@@ -14,6 +14,13 @@ import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
   const [isAdmin] = useAdmin();
+
+  // TODO : isInstructor
+
+  // TODO: load the admin data from the database.......
+  // const isAdmin = true;
+  const isInstructor = false;
+
   const commonNavOptions = (
     <>
       <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
@@ -30,9 +37,6 @@ const DashboardLayout = () => {
       </li>
     </>
   );
-
-  // TODO: load the admin data from the database.......
-  // const isAdmin = true;
 
   return (
     <div>
@@ -54,6 +58,17 @@ const DashboardLayout = () => {
                 <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
                   <FaUsers />
                   <Link to="/dashboard/manage-users">Manage Users</Link>
+                </li>
+              </>
+            ) : isInstructor ? (
+              <>
+                <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
+                  <FaBookReader />
+                  <Link to="/dashboard/my-selected-classes">Add Class</Link>
+                </li>
+                <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
+                  <FaUsers />
+                  <Link to="/dashboard/manage-users">My Classes</Link>
                 </li>
               </>
             ) : (
