@@ -1,11 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import useTitleChange from '../../TitleChange/TitleChange';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
 
 const SignUp = () => {
   useTitleChange('Sprache | Sign Up');
@@ -20,7 +21,7 @@ const SignUp = () => {
   } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
-  const { createUser, userLogOut } = useContext(AuthContext);
+  const { createUser, userLogOut } = useAuth();
   const navigation = useNavigate();
 
   // creating a new user with email and password
@@ -48,21 +49,17 @@ const SignUp = () => {
           userUpdate(createdUser, name, photoUrl);
 
           // storing user information to database
-          const savedUser = {
-            name: name,
-            email: email,
-            studentRole: true,
-            adminRole: false,
-            instructorRole: false,
-          };
-          fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(savedUser),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
+
+          axios
+            .post(`http://localhost:5000/users`, {
+              name: name,
+              email: email,
+              studentRole: true,
+              adminRole: false,
+              instructorRole: false,
+            })
+            .then((res) => {
+              if (res.data.insertedId) {
                 toast.success('User is successfully created', {
                   position: 'top-center',
                   autoClose: 2000,

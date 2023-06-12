@@ -1,16 +1,15 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../providers/AuthProvider';
+
 import useTitleChange from '../../TitleChange/TitleChange';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
 const SignIn = () => {
   const {
     register,
     handleSubmit,
-    reset,
-    formState,
-    getValues,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
 
@@ -19,7 +18,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const { userSignIn, googlePopUp } = useContext(AuthContext);
+  const { userSignIn, googlePopUp } = useAuth();
 
   const location = useLocation();
   const { from } = location.state || { from: { pathname: '/' } };
@@ -55,20 +54,14 @@ const SignIn = () => {
     googlePopUp()
       .then((result) => {
         const loggedUser = result.user;
-
-        const savedUser = {
-          name: loggedUser?.displayName,
-          email: loggedUser?.email,
-          studentRole: true,
-          adminRole: false,
-          instructorRole: false,
-        };
-        fetch('http://localhost:5000/users', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(savedUser),
-        })
-          .then((res) => res.json())
+        axios
+          .post(`http://localhost:5000/users`, {
+            name: loggedUser?.displayName,
+            email: loggedUser?.email,
+            studentRole: true,
+            adminRole: false,
+            instructorRole: false,
+          })
           .then(() => navigate(from, { replace: true }));
       })
       .catch((error) => {

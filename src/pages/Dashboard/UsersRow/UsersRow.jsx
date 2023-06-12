@@ -1,7 +1,6 @@
-import { FaTrashAlt } from 'react-icons/fa';
-import Button from '../../../components/Button/Button';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const UsersRow = ({ user, idx, refetch }) => {
   const [isAdminDisabled, setAdminDisabled] = useState(false);
@@ -9,47 +8,41 @@ const UsersRow = ({ user, idx, refetch }) => {
   const { _id, name, adminRole, instructorRole } = user;
 
   const makeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
-      method: 'PATCH',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          refetch();
-          toast.success(`${name} is an admin now`, {
-            position: 'top-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          });
-        }
-      });
+    axios.patch(`http://localhost:5000/users/admin/${id}`).then((res) => {
+      if (res.data.modifiedCount) {
+        refetch();
+        toast.success(`${name} is an admin now`, {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+      }
+    });
     setAdminDisabled(true);
   };
+
+  // making instructor
   const makeInstructor = (id) => {
-    fetch(`http://localhost:5000/users/instructor/${id}`, {
-      method: 'PATCH',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          refetch();
-          toast.success(`${name} is an instructor now`, {
-            position: 'top-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          });
-        }
-      });
+    axios.patch(`http://localhost:5000/users/instructor/${id}`).then((res) => {
+      if (res.data.modifiedCount) {
+        refetch();
+        toast.success(`${name} is an instructor now`, {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+      }
+    });
     setInstructorDisabled(true);
   };
 

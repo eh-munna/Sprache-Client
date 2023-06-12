@@ -1,14 +1,15 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 // import { toast } from 'react-toastify';
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
-import { AuthContext } from '../../providers/AuthProvider';
+
 import { FaAlignLeft, FaAlignRight } from 'react-icons/fa';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const { user, userLogOut } = useContext(AuthContext);
+  const { user, userLogOut } = useAuth();
   const navigate = useNavigate();
 
   // signing out user

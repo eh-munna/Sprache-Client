@@ -1,9 +1,9 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../../providers/AuthProvider';
 import useLoadUsers from '../../../hooks/useLoadUsers';
+import useAuth from '../../../hooks/useAuth';
 
 const Analytics = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
+
   const [users] = useLoadUsers();
 
   // TODO: ADMIN...

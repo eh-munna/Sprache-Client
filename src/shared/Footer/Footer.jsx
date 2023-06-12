@@ -4,30 +4,30 @@ import {
   FaInstagram,
   FaLocationArrow,
   FaPhone,
-  FaSearchLocation,
   FaTwitter,
   FaYoutube,
 } from 'react-icons/fa';
-import { AuthContext } from '../../providers/AuthProvider';
+import { ToastContainer } from 'react-toastify';
+
 import { useContext } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { AuthContext } from '../../providers/AuthProvider';
 const Footer = () => {
   const { user } = useContext(AuthContext);
 
-  const userNotification = () => {
-    if (!user) {
-      toast.warn('You are not logged in', {
-        position: 'top-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
-    }
-  };
+  // const userNotification = () => {
+  //   if (!user) {
+  //     toast.warn('You are not logged in', {
+  //       position: 'top-center',
+  //       autoClose: 2000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: 'light',
+  //     });
+  //   }
+  // };
 
   return (
     <footer className="font-[roboto] bg-[#f8f9fa] py-6 md:py-16 shadow-inner">
