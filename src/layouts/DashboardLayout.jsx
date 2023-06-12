@@ -10,8 +10,10 @@ import {
   FaServer,
   FaUsers,
 } from 'react-icons/fa';
+import useAdmin from '../hooks/useAdmin';
 
 const DashboardLayout = () => {
+  const [isAdmin] = useAdmin();
   const commonNavOptions = (
     <>
       <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
@@ -30,7 +32,7 @@ const DashboardLayout = () => {
   );
 
   // TODO: load the admin data from the database.......
-  const isAdmin = true;
+  // const isAdmin = true;
 
   return (
     <div>
