@@ -1,0 +1,66 @@
+[
+  {
+    "courseName": "Beginner German",
+    "instructorName": "Anna Müller",
+    "availableSeats": 15,
+    "price": 200,
+    "enrolledStudents": 12,
+    "classImg": "https://i.ibb.co/bRNFbcc/class-1.jpg"
+  },
+  {
+    "courseName": "Intermediate German",
+    "instructorName": "Johannes Schmidt",
+    "availableSeats": 10,
+    "price": 250,
+    "enrolledStudents": 8,
+    "classImg": "https://i.ibb.co/CmtpNs6/class-2.jpg"
+  },
+  {
+    "courseName": "Advanced German",
+    "instructorName": "Maria Wagner",
+    "availableSeats": 8,
+    "price": 300,
+    "enrolledStudents": 6,
+    "classImg": "https://i.ibb.co/grbb9cv/class-3.jpg"
+  },
+  {
+    "courseName": "Business German",
+    "instructorName": "Hans Müller",
+    "availableSeats": 10,
+    "price": 350,
+    "enrolledStudents": 10,
+    "classImg": "https://i.ibb.co/m6DMVjm/class-4.jpg"
+  },
+  {
+    "courseName": "German Conversation",
+    "instructorName": "Sabine Becker",
+    "availableSeats": 12,
+    "price": 150,
+    "enrolledStudents": 8,
+    "classImg": "https://i.ibb.co/LkPVwNz/class-5.jpg"
+  },
+  {
+    "courseName": "German Grammar",
+    "instructorName": "Thomas Fischer",
+    "availableSeats": 15,
+    "price": 180,
+    "enrolledStudents": 11,
+    "classImg": "https://i.ibb.co/sK2ddCx/class-6.jpg"
+  },
+  {
+    "courseName": "German for Travelers",
+    "instructorName": "Caroline Weber",
+    "availableSeats": 12,
+    "price": 200,
+    "enrolledStudents": 9,
+    "classImg": "https://i.ibb.co/99j4k1g/class-7.jpg"
+  },
+  {
+    "courseName": "German Literature",
+    "instructorName": "Martin Schneider",
+    "availableSeats": 10,
+    "price": 300,
+    "enrolledStudents": 7,
+    "classImg": "https://i.ibb.co/tpgQQ5W/class-8.jpg"
+  }
+]

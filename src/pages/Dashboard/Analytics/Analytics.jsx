@@ -1,11 +1,13 @@
 import useLoadUsers from '../../../hooks/useLoadUsers';
 import useAuth from '../../../hooks/useAuth';
 import useAdmin from '../../../hooks/useAdmin';
+import useLoadClasses from '../../../hooks/useLoadClasses';
 
 const Analytics = () => {
   const { user } = useAuth();
 
   const [users, refetch] = useLoadUsers();
+  const [classes] = useLoadClasses();
 
   // TODO: ADMIN...
 
@@ -25,7 +27,7 @@ const Analytics = () => {
               <h2 className="text-2xl text-center font-[archivo]">
                 Total Classes
               </h2>
-              <p className="pt-8 font-[roboto] text-xl">9</p>
+              <p className="pt-8 font-[roboto] text-xl">{classes.length}</p>
             </div>
 
             <div className="border-[#70b6fe] border border-opacity-5 shadow-xl p-4 rounded-md flex flex-col items-center justify-center bg-[#70b6fe] text-[#fff]">
