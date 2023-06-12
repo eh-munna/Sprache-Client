@@ -5,7 +5,7 @@ import useAdmin from '../../../hooks/useAdmin';
 const Analytics = () => {
   const { user } = useAuth();
 
-  const [users] = useLoadUsers();
+  const [users, refetch] = useLoadUsers();
 
   // TODO: ADMIN...
 

@@ -3,7 +3,7 @@ import useLoadUsers from '../../../hooks/useLoadUsers';
 import UsersRow from '../UsersRow/UsersRow';
 
 const ManageUsers = () => {
-  useTitleChange('Sprache | AllUsers');
+  useTitleChange('Sprache | Users');
   const [users, refetch] = useLoadUsers();
 
   return (

@@ -9,7 +9,7 @@ const useLoadUsers = () => {
     queryKey: ['users'],
     enabled: !loading,
     queryFn: async () => {
-      const response = await axiosSecure('/users');
+      const response = await axiosSecure.get('/users');
       return response.data;
     },
   });

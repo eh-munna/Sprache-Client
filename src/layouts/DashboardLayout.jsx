@@ -51,9 +51,7 @@ const DashboardLayout = () => {
               <>
                 <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
                   <FaBookReader />
-                  <Link to="/dashboard/my-selected-classes">
-                    Manage Classes
-                  </Link>
+                  <Link to="/dashboard/manage-classes">Manage Classes</Link>
                 </li>
                 <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
                   <FaUsers />
@@ -64,11 +62,11 @@ const DashboardLayout = () => {
               <>
                 <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
                   <FaBookReader />
-                  <Link to="/dashboard/my-selected-classes">Add Class</Link>
+                  <Link to="/dashboard/add-class">Add Class</Link>
                 </li>
                 <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
                   <FaUsers />
-                  <Link to="/dashboard/manage-users">My Classes</Link>
+                  <Link to="/dashboard/my-classes">My Classes</Link>
                 </li>
               </>
             ) : (

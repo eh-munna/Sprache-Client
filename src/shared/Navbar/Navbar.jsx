@@ -93,7 +93,10 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-[#f8f9fa] shadow-md sticky top-0 rounded-b-md pb-2 md:py-2 z-20">
+    // TODO : Theme
+
+    // <nav className="bg-[#f8f9fa] shadow-md sticky top-0 rounded-b-md pb-2 md:py-2 z-20">
+    <nav className="sticky top-0 rounded-b-md pb-2 md:py-2 z-20">
       <div className="relative container px-1 md:px-3 mx-auto flex justify-between items-center">
         <ul className="flex flex-col md:flex-row items-center justify-between gap-1 md:gap-3 z-10">
           {/* <ul className=""> */}

@@ -29,8 +29,11 @@ const Footer = () => {
   //   }
   // };
 
+  // TODO : theme
+
   return (
-    <footer className="font-[roboto] bg-[#f8f9fa] py-6 md:py-16 shadow-inner">
+    // <footer className="font-[roboto] bg-[#f8f9fa] py-6 md:py-16 shadow-inner">
+    <footer className="font-[roboto] py-6 md:py-16">
       <div className="container px-4 py- mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-16">
           {/* social links */}

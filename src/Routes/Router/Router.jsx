@@ -11,6 +11,10 @@ import MySelectedClasses from '../../pages/Dashboard/MySelectedClasses/MySelecte
 import MyEnrolledClasses from '../../pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses';
 import ManageUsers from '../../pages/Dashboard/ManageUsers/ManageUsers';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import ManageClasses from '../../pages/Dashboard/ManageClasses/ManageClasses';
+import AddClass from '../../pages/Dashboard/AddClass/AddClass';
+import MyClasses from '../../pages/Dashboard/MyClasses/MyClasses';
+import AdminRoute from '../AdminRoute/AdminRoute';
 
 const router = createBrowserRouter([
   {
@@ -50,16 +54,36 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: '/dashboard/manage-classes',
+        element: (
+          <AdminRoute>
+            <ManageClasses />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: '/dashboard/manage-users',
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: '/dashboard/add-class',
+        element: <AddClass />,
+      },
+      {
+        path: '/dashboard/my-classes',
+        element: <MyClasses />,
+      },
+      {
         path: '/dashboard/my-selected-classes',
         element: <MySelectedClasses />,
       },
       {
         path: '/dashboard/my-enrolled-classes',
         element: <MyEnrolledClasses />,
-      },
-      {
-        path: '/dashboard/manage-users',
-        element: <ManageUsers />,
       },
     ],
   },
