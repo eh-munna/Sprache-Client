@@ -2,65 +2,89 @@
   {
     "courseName": "Beginner German",
     "instructorName": "Anna Müller",
+    "instructorEmail": "anna.mueller@example.com",
+    "instructorImgUrl": "https://i.ibb.co/0YzNjjw/anna-mueller.jpg",
     "availableSeats": 15,
     "price": 200,
     "enrolledStudents": 12,
-    "classImg": "https://i.ibb.co/bRNFbcc/class-1.jpg"
+    "classImg": "https://i.ibb.co/bRNFbcc/class-1.jpg",
+    "classDetails": "This course is designed for beginners who have no prior knowledge of the German language. Learn the basics of German vocabulary, grammar, and pronunciation in a fun and interactive environment."
   },
   {
     "courseName": "Intermediate German",
     "instructorName": "Johannes Schmidt",
+    "instructorEmail": "johannes.schmidt@example.com",
+    "instructorImgUrl": "https://i.ibb.co/5cYfrbP/johannes-schmidt.jpg",
     "availableSeats": 10,
     "price": 250,
     "enrolledStudents": 8,
-    "classImg": "https://i.ibb.co/CmtpNs6/class-2.jpg"
+    "classImg": "https://i.ibb.co/CmtpNs6/class-2.jpg",
+    "classDetails": "This course is suitable for students with some basic knowledge of German. Expand your vocabulary, improve your grammar skills, and engage in conversations to enhance your fluency in German."
   },
   {
     "courseName": "Advanced German",
     "instructorName": "Maria Wagner",
+    "instructorEmail": "maria.wagner@example.com",
+    "instructorImgUrl": "https://i.ibb.co/4J0hXPh/maria-wagner.jpg",
     "availableSeats": 8,
     "price": 300,
     "enrolledStudents": 6,
-    "classImg": "https://i.ibb.co/grbb9cv/class-3.jpg"
+    "classImg": "https://i.ibb.co/grbb9cv/class-3.jpg",
+    "classDetails": "This course is designed for advanced learners who want to deepen their understanding of the German language. Enhance your speaking, writing, and comprehension skills through various challenging exercises and activities."
   },
   {
     "courseName": "Business German",
     "instructorName": "Hans Müller",
+    "instructorEmail": "hans.mueller@example.com",
+    "instructorImgUrl": "https://i.ibb.co/RhvW4CR/hans-mueller.jpg",
     "availableSeats": 10,
     "price": 350,
     "enrolledStudents": 10,
-    "classImg": "https://i.ibb.co/m6DMVjm/class-4.jpg"
+    "classImg": "https://i.ibb.co/m6DMVjm/class-4.jpg",
+    "classDetails": "This course focuses on German language skills required for business settings. Learn specialized vocabulary, improve your business communication skills, and gain confidence in conducting meetings, negotiations, and presentations in German."
   },
   {
     "courseName": "German Conversation",
     "instructorName": "Sabine Becker",
+    "instructorEmail": "sabine.becker@example.com",
+    "instructorImgUrl": "https://i.ibb.co/P60Hv5C/sabine-becker.jpg",
     "availableSeats": 12,
     "price": 150,
     "enrolledStudents": 8,
-    "classImg": "https://i.ibb.co/LkPVwNz/class-5.jpg"
+    "classImg": "https://i.ibb.co/LkPVwNz/class-5.jpg",
+    "classDetails": "This course is designed to improve your conversational skills in German. Engage in discussions on various topics, practice speaking with fellow learners, and enhance your fluency and confidence in German conversations."
   },
   {
     "courseName": "German Grammar",
     "instructorName": "Thomas Fischer",
+    "instructorEmail": "thomas.fischer@example.com",
+    "instructorImgUrl": "https://i.ibb.co/6bj9bjw/thomas-fischer.jpg",
     "availableSeats": 15,
     "price": 180,
     "enrolledStudents": 11,
-    "classImg": "https://i.ibb.co/sK2ddCx/class-6.jpg"
+    "classImg": "https://i.ibb.co/sK2ddCx/class-6.jpg",
+    "classDetails": "This course focuses on the intricacies of German grammar. Master the grammatical rules, learn how to avoid common mistakes, and improve your writing skills through various exercises and activities."
   },
   {
     "courseName": "German for Travelers",
     "instructorName": "Caroline Weber",
+    "instructorEmail": "caroline.weber@example.com",
+    "instructorImgUrl": "https://i.ibb.co/JBt2cmm/caroline-weber.jpg",
     "availableSeats": 12,
     "price": 200,
     "enrolledStudents": 9,
-    "classImg": "https://i.ibb.co/99j4k1g/class-7.jpg"
+    "classImg": "https://i.ibb.co/99j4k1g/class-7.jpg",
+    "classDetails": "This course is designed for travelers who want to learn basic German phrases and vocabulary to navigate through German-speaking countries. Learn how to ask for directions, order food, book accommodations, and engage in simple conversations."
   },
   {
     "courseName": "German Literature",
     "instructorName": "Martin Schneider",
+    "instructorEmail": "martin.schneider@example.com",
+    "instructorImgUrl": "https://i.ibb.co/QcZpX7P/martin-schneider.jpg",
     "availableSeats": 10,
     "price": 300,
     "enrolledStudents": 7,
-    "classImg": "https://i.ibb.co/tpgQQ5W/class-8.jpg"
+    "classImg": "https://i.ibb.co/tpgQQ5W/class-8.jpg",
+    "classDetails": "This course explores German literature and provides an in-depth analysis of notable German literary works. Gain a deeper understanding of German authors, their writing styles, and the cultural and historical context behind their works."
   }
 ]

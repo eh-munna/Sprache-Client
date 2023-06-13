@@ -38,7 +38,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-16">
           {/* social links */}
           <div className="pt-3 md:pt-0 space-y-3">
-            <h3 className="text-[#5a189a]  font-bold font-[archivo] text-xl md:text-2xl pb-2.5 md:pb-4">
+            <h3 className="text-[#5a189a]  font-bold font-[archivo] text-xl md:text-2xl pb-2.5 md:pb-4 italic">
               <Link to="/">Sprache</Link>
             </h3>
             <div className=" text-[#4361ee] font-[roboto] text-lg pb-4">
