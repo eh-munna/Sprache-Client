@@ -1,14 +1,7 @@
 import { motion } from 'framer-motion';
 
 const PopularCard = ({ classItem }) => {
-  const {
-    courseName,
-    instructorName,
-    availableSeats,
-    price,
-    enrolledStudents,
-    classImg,
-  } = classItem;
+  const { courseName, enrolledStudents, classImg } = classItem;
 
   return (
     <>
@@ -25,9 +18,10 @@ const PopularCard = ({ classItem }) => {
             <h3 className="text-xl font-bold font-[archivo] text-[#5a189a]">
               {courseName}
             </h3>
-            <p className="text-[#4361ee] font-[roboto] font-medium">
-              {' '}
-              Number of student : {enrolledStudents}
+            <p className="text-[#4361ee] font-roboto font-medium">
+              {enrolledStudents > 1
+                ? `Number of students : ${enrolledStudents}`
+                : `Number of student : ${enrolledStudents}`}
             </p>
           </div>
         </motion.div>

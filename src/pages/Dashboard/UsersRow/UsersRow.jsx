@@ -8,41 +8,45 @@ const UsersRow = ({ user, idx, refetch }) => {
   const { _id, name, adminRole, instructorRole } = user;
 
   const makeAdmin = (id) => {
-    axios.patch(`http://localhost:5000/users/admin/${id}`).then((res) => {
-      if (res.data.modifiedCount) {
-        refetch();
-        toast.success(`${name} is an admin now`, {
-          position: 'top-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
-      }
-    });
+    axios
+      .patch(`https://sprache-server.vercel.app/users/admin/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          refetch();
+          toast.success(`${name} is an admin now`, {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        }
+      });
     setAdminDisabled(true);
   };
 
   // making instructor
   const makeInstructor = (id) => {
-    axios.patch(`http://localhost:5000/users/instructor/${id}`).then((res) => {
-      if (res.data.modifiedCount) {
-        refetch();
-        toast.success(`${name} is an instructor now`, {
-          position: 'top-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
-      }
-    });
+    axios
+      .patch(`https://sprache-server.vercel.app/users/instructor/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          refetch();
+          toast.success(`${name} is an instructor now`, {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        }
+      });
     setInstructorDisabled(true);
   };
 

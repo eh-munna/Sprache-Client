@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const InstructorCard = ({ classItem }) => {
-  const { instructorName, enrolledStudents, classImg } = classItem;
+  const { instructorName, classImg, courseName } = classItem;
 
   return (
     <>
@@ -27,9 +27,8 @@ const InstructorCard = ({ classItem }) => {
             <h3 className="text-xl font-bold font-[archivo] text-[#5a189a]">
               {instructorName}
             </h3>
-            <p className="text-[#4361ee] font-[roboto] font-medium">
-              {' '}
-              Number of student : {enrolledStudents}
+            <p className="text-[#4361ee] font-[roboto] font-medium capitalize">
+              {courseName} Teacher
             </p>
           </div>
         </motion.div>

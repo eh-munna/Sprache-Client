@@ -10,7 +10,7 @@ const useAxiosSecure = () => {
   let axiosSecure;
 
   axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000', // Replace with your API base URL
+    baseURL: 'https://sprache-server.vercel.app',
   });
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
@@ -30,8 +30,8 @@ const useAxiosSecure = () => {
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
         ) {
-          userLogOut(); // Call the logout method from your AuthContext
-          navigate('/sign-in'); // Navigate to the login page
+          userLogOut();
+          navigate('/sign-in');
         }
         return Promise.reject(error);
       }
