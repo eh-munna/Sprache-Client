@@ -1,9 +1,7 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import './HomeSlider.css';
-import { AuthContext } from '../../../providers/AuthProvider';
-import Button from '../../../components/Button/Button';
 
 const images = [
   'https://i.ibb.co/mRR6rQ5/book-1.jpg',
@@ -21,14 +19,8 @@ const textContent = [
   'Gain a competitive edge in a globalized world',
 ];
 
-// const hello = textContent.map((text) => {
-//   <h2 className="top-1/2 absolute right-1/2">{text}</h2>;
-//   return text;
-// });
-
 const HomeSlider = () => {
   const [opacities, setOpacities] = useState([]);
-
   const [sliderRef] = useKeenSlider({
     slides: images.length,
     loop: true,
@@ -49,34 +41,31 @@ const HomeSlider = () => {
       setOpacities(new_opacities);
     },
   });
-
   return (
-    <>
-      <div ref={sliderRef} className={`fader `}>
-        {images.map((src, idx) => (
-          <div
-            key={idx}
-            className="fader__slide bg-black text-white"
-            style={{ opacity: opacities[idx] }}
-          >
-            <div>
-              <img className="opacity-30" src={src} />
-            </div>
-            <div ref={textRef}>
-              {textContent.map((text, idx) => (
-                <h2
-                  key={idx}
-                  className="fader__slide flex justify-center items-center text-lg md:text-4xl font-[archivo] text-gray-200 px-2"
-                  style={{ opacity: opacities[idx] }}
-                >
-                  {text}
-                </h2>
-              ))}
-            </div>
+    <div ref={sliderRef} className={`fader `}>
+      {images.map((src, idx) => (
+        <div
+          key={idx}
+          className="fader__slide bg-black text-white"
+          style={{ opacity: opacities[idx] }}
+        >
+          <div>
+            <img className="opacity-30" src={src} />
           </div>
-        ))}
-      </div>
-    </>
+          <div ref={textRef}>
+            {textContent.map((text, idx) => (
+              <h2
+                key={idx}
+                className="fader__slide flex justify-center items-center text-lg md:text-4xl font-[archivo] text-gray-200 px-2"
+                style={{ opacity: opacities[idx] }}
+              >
+                {text}
+              </h2>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 

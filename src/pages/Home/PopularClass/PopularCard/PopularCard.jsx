@@ -12,7 +12,7 @@ const PopularCard = ({ classItem }) => {
 
   return (
     <>
-      <div>
+      <div className="overflow-hidden md:overflow-visible">
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

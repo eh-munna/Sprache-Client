@@ -5,11 +5,13 @@ export default {
       fontFamily: {
         archivo: ['Archivo', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
+        cinzel: ['Cinzel', 'sans-serif'],
       },
     },
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: ['light'],
+    themes: ['light', 'dark'],
+    // themes: ['light'],
   },
 };

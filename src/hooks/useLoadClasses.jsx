@@ -3,7 +3,7 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useLoadClasses = () => {
   const [axiosSecure] = useAxiosSecure();
-  const { data: classes = [], refetch } = useQuery({
+  const { data: classes = [] } = useQuery({
     queryKey: ['classes'],
     queryFn: async () => {
       const res = await axiosSecure.get(`/classes`);
@@ -11,7 +11,7 @@ const useLoadClasses = () => {
     },
   });
 
-  return [classes, refetch];
+  return [classes];
 };
 
 export default useLoadClasses;

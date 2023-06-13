@@ -7,7 +7,8 @@ const MainLayout = () => {
   const noHeaderFooter =
     location.pathname.includes('instructors') ||
     location.pathname.includes('sign-in') ||
-    location.pathname.includes('sign-up');
+    location.pathname.includes('sign-up') ||
+    location.pathname.includes('classes');
 
   return (
     <div className="">
