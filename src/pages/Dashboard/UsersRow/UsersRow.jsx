@@ -5,7 +5,7 @@ import axios from 'axios';
 const UsersRow = ({ user, idx, refetch }) => {
   const [isAdminDisabled, setAdminDisabled] = useState(false);
   const [isInstructorDisabled, setInstructorDisabled] = useState(false);
-  const { _id, name, adminRole, instructorRole } = user;
+  const { _id, name, adminRole, instructorRole, email } = user;
 
   const makeAdmin = (id) => {
     axios.patch(`http://localhost:5000/users/admin/${id}`).then((res) => {
@@ -28,21 +28,25 @@ const UsersRow = ({ user, idx, refetch }) => {
 
   // making instructor
   const makeInstructor = (id) => {
-    axios.patch(`http://localhost:5000/users/instructor/${id}`).then((res) => {
-      if (res.data.modifiedCount) {
-        refetch();
-        toast.success(`${name} is an instructor now`, {
-          position: 'top-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
-      }
-    });
+    axios
+      .patch(`http://localhost:5000/users/instructor/${id}`, {
+        email,
+      })
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          refetch();
+          toast.success(`${name} is an instructor now`, {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        }
+      });
     setInstructorDisabled(true);
   };
 

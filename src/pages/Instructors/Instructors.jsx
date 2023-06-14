@@ -1,10 +1,10 @@
 import useTitleChange from '../../TitleChange/TitleChange';
 import Heading from '../../components/Heading';
-import useLoadClasses from '../../hooks/useLoadClasses';
+import useLoadInstructors from '../../hooks/useLoadInstructors';
 import SIngleInstructor from './SingleInstructor/SIngleInstructor';
 
 const Instructors = () => {
-  const [classes] = useLoadClasses();
+  const [instructors] = useLoadInstructors();
 
   useTitleChange('Sprache | Instructors');
   return (
@@ -15,10 +15,10 @@ const Instructors = () => {
       <Heading>The language teaching experts</Heading>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {classes.map((singleClass) => (
+        {instructors?.map((singleInstructor) => (
           <SIngleInstructor
-            key={singleClass._id}
-            singleClass={singleClass}
+            key={singleInstructor._id}
+            singleInstructor={singleInstructor}
             className="rounded-lg"
           ></SIngleInstructor>
         ))}

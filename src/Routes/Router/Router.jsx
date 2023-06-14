@@ -13,6 +13,7 @@ import ManageClasses from '../../pages/Dashboard/ManageClasses/ManageClasses';
 import AddClass from '../../pages/Dashboard/AddClass/AddClass';
 import MyClasses from '../../pages/Dashboard/MyClasses/MyClasses';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import InstructorRoute from '../InstructorRoute/InstructorRoute';
 import Classes from '../../pages/Classes/Classes';
 import UserHome from '../../pages/Dashboard/UserHome/UserHome';
 import AdminHome from '../../pages/Dashboard/AdminHome/AdminHome';
@@ -100,16 +101,28 @@ const router = createBrowserRouter([
 
       {
         path: 'instructor-home',
-        element: <InstructorHome />,
+        element: (
+          <InstructorRoute>
+            <InstructorHome />
+          </InstructorRoute>
+        ),
       },
 
       {
         path: 'add-class',
-        element: <AddClass />,
+        element: (
+          <InstructorRoute>
+            <AddClass />
+          </InstructorRoute>
+        ),
       },
       {
         path: 'my-classes',
-        element: <MyClasses />,
+        element: (
+          <InstructorRoute>
+            <MyClasses />
+          </InstructorRoute>
+        ),
       },
     ],
   },

@@ -2,7 +2,7 @@ import useAuth from '../../../hooks/useAuth';
 import useBooked from '../../../hooks/useBooked';
 
 const UserHome = () => {
-  const [booked, refetch] = useBooked();
+  const [booked] = useBooked();
   const { user } = useAuth();
   return (
     <>
