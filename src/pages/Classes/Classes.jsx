@@ -1,11 +1,21 @@
+import { useState } from 'react';
 import Heading from '../../components/Heading';
 import useLoadClasses from '../../hooks/useLoadClasses';
-
 import useTitleChange from '../../TitleChange/TitleChange';
 import SingleClassCard from './SingleClassCard/SingleClassCard';
+// import useUser from '../../hooks/useUser';
+// import useUser from '../../hooks/useUser';
 
 const Classes = () => {
   const [classes] = useLoadClasses();
+  // const [disabled, setDisabled] = useState(true);
+
+  // const [targetUser] = useUser();
+  // console.log(targetUser._id);
+
+  // if (!targetUser.studentRole) {
+  //   setDisabled(true);
+  // }
 
   useTitleChange('Sprache | Classes');
   return (
@@ -20,6 +30,7 @@ const Classes = () => {
           <SingleClassCard
             key={singleClass._id}
             singleClass={singleClass}
+            // disabled={disabled}
             className="rounded-lg"
           ></SingleClassCard>
         ))}

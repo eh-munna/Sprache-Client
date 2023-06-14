@@ -5,8 +5,6 @@ import Home from '../../pages/Home/Home';
 import SignIn from '../../pages/SignIn/SignIn';
 import SignUp from '../../pages/SignUp/SignUp';
 import Instructors from '../../pages/Instructors/Instructors';
-import Dashboard from '../../pages/Dashboard/Dashboard';
-import DashboardLayout from '../../layouts/DashboardLayout';
 import MySelectedClasses from '../../pages/Dashboard/MySelectedClasses/MySelectedClasses';
 import MyEnrolledClasses from '../../pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses';
 import ManageUsers from '../../pages/Dashboard/ManageUsers/ManageUsers';
@@ -16,6 +14,10 @@ import AddClass from '../../pages/Dashboard/AddClass/AddClass';
 import MyClasses from '../../pages/Dashboard/MyClasses/MyClasses';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import Classes from '../../pages/Classes/Classes';
+import UserHome from '../../pages/Dashboard/UserHome/UserHome';
+import AdminHome from '../../pages/Dashboard/AdminHome/AdminHome';
+import Dashboard from '../../pages/Dashboard/Dashboard';
+import InstructorHome from '../../pages/Dashboard/InstructorHome/InstructorHome';
 
 const router = createBrowserRouter([
   {
@@ -46,20 +48,40 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/dashboard',
+    path: 'dashboard',
     errorElement: <ErrorPage />,
     element: (
       <PrivateRoute>
-        <DashboardLayout />
+        <Dashboard />
       </PrivateRoute>
     ),
     children: [
+      // user routes
+
       {
-        path: '/dashboard',
-        element: <Dashboard />,
+        path: 'user-home',
+        element: <UserHome />,
       },
       {
-        path: '/dashboard/manage-classes',
+        path: 'my-selected-classes',
+        element: <MySelectedClasses />,
+      },
+      {
+        path: 'my-enrolled-classes',
+        element: <MyEnrolledClasses />,
+      },
+
+      // admin routes
+      {
+        path: 'admin-home',
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'manage-classes',
         element: (
           <AdminRoute>
             <ManageClasses />
@@ -67,28 +89,27 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/dashboard/manage-users',
+        path: 'manage-users',
         element: (
           <AdminRoute>
             <ManageUsers />
           </AdminRoute>
         ),
       },
+      // instructor routes
+
       {
-        path: '/dashboard/add-class',
+        path: 'instructor-home',
+        element: <InstructorHome />,
+      },
+
+      {
+        path: 'add-class',
         element: <AddClass />,
       },
       {
-        path: '/dashboard/my-classes',
+        path: 'my-classes',
         element: <MyClasses />,
-      },
-      {
-        path: '/dashboard/my-selected-classes',
-        element: <MySelectedClasses />,
-      },
-      {
-        path: '/dashboard/my-enrolled-classes',
-        element: <MyEnrolledClasses />,
       },
     ],
   },

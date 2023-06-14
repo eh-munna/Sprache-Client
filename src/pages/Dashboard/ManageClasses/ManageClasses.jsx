@@ -1,5 +1,3 @@
-const ManageClasses = () => {
-  return <div>here manage classes</div>;
-};
+const ManageClasses = () => {};
 
 export default ManageClasses;

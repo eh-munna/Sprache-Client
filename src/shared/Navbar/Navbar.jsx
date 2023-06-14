@@ -6,6 +6,8 @@ import { Tooltip } from 'react-tooltip';
 
 import { FaAlignLeft, FaAlignRight } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(
@@ -14,6 +16,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const { user, userLogOut } = useAuth();
   const navigate = useNavigate();
+
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   const themeToggle = (e) => {
     if (e.target.checked) {
@@ -94,7 +99,13 @@ const Navbar = () => {
         <>
           <li>
             <NavLink
-              to="/dashboard"
+              to={
+                isAdmin
+                  ? `/dashboard/admin-home`
+                  : isInstructor
+                  ? `/dashboard/instructor-home`
+                  : `/dashboard/user-home`
+              }
               className={({ isActive }) =>
                 isActive
                   ? `border-b border-b-[#5a189a] text-[#4361ee] p-1`

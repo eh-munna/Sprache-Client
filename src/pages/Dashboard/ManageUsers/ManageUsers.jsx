@@ -13,11 +13,6 @@ const ManageUsers = () => {
       </h2>
 
       <div className="grid grid-cols-4 pt-6 gap-3 justify-center items-center">
-        {/* <div className="text-center">Sl</div>
-        <div className="text-center">Name</div>
-        <div className="text-center">Email</div>
-        <div className="text-center">Role</div>
-        <div className="text-center">Action</div> */}
         <div className="font-[arichivo] font-bold text-[#5a189a] text-lg uppercase ">
           #
         </div>
