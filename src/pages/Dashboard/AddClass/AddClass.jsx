@@ -2,9 +2,13 @@ import Heading from '../../../components/Heading';
 import { get, useForm } from 'react-hook-form';
 
 import useGetInstructor from '../../../hooks/useGetInstructor';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 const AddClass = () => {
   const [getInstructor] = useGetInstructor();
-
+  const instructorName = getInstructor?.name;
+  const instructorEmail = getInstructor?.instructorEmail;
   const {
     register,
     handleSubmit,
@@ -15,9 +19,49 @@ const AddClass = () => {
   } = useForm();
 
   const addClass = (data) => {
-    // const { courseName, classImg, availableSeats, price, instructorName, instructorEmail } = data;
-    console.log(data);
+    const {
+      courseName,
+      classImg,
+      availableSeats,
+      price,
+      instructorName,
+      instructorEmail,
+      classDetails,
+    } = data;
+
+    axios
+      .post(`http://localhost:5000/add-class`, {
+        courseName: courseName,
+        classImg: classImg,
+        availableSeats: parseFloat(availableSeats),
+        price: parseFloat(price),
+        instructorName: instructorName,
+        instructorEmail: instructorEmail,
+        classDetails: classDetails,
+        status: 'pending',
+      })
+      .then((res) => {
+        if (res.data.insertedId) {
+          toast.success('One class is added', {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        }
+      });
   };
+
+  // resetting the form
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset();
+    }
+  }, [formState, getValues, reset, instructorName, instructorEmail]);
 
   return (
     <div>
@@ -37,7 +81,7 @@ const AddClass = () => {
             />
           </div>
           {errors.courseName && (
-            <p className="text-red-500">This field is required</p>
+            <p className="text-red-500">Please give a name for the course</p>
           )}
           <div>
             <input
@@ -47,12 +91,15 @@ const AddClass = () => {
               className="w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
           </div>
+          {errors.classImg && (
+            <p className="text-red-500">Please enter a valid url</p>
+          )}
           <div>
             <input
               readOnly
-              defaultValue={getInstructor?.name}
+              defaultValue={instructorName}
               {...register('instructorName', {
-                instructorName: getInstructor?.name,
+                instructorName: instructorName,
               })}
               className="w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
@@ -60,9 +107,9 @@ const AddClass = () => {
           <div>
             <input
               readOnly
-              defaultValue={getInstructor?.instructorEmail}
+              defaultValue={instructorEmail}
               {...register('instructorEmail', {
-                instructorEmail: getInstructor?.instructorEmail,
+                instructorEmail: instructorEmail,
               })}
               className=" w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
@@ -77,7 +124,7 @@ const AddClass = () => {
             />
           </div>
           {errors.availableSeats && (
-            <p className="text-red-500">This field is required</p>
+            <p className="text-red-500">Please mention available seats</p>
           )}
           <div>
             <input
@@ -88,8 +135,19 @@ const AddClass = () => {
               className=" w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
           </div>
-          {errors.price && (
-            <p className="text-red-500">This field is required</p>
+          {errors.price && <p className="text-red-500">Price is required</p>}
+          <div>
+            <textarea
+              placeholder="Message"
+              className="w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
+              {...register('classDetails', { required: true })}
+              id=""
+              cols="20"
+              rows="5"
+            ></textarea>
+          </div>
+          {errors.classDetails && (
+            <p className="text-red-500">Please provide classs details</p>
           )}
 
           {/* submitting-form */}
@@ -109,13 +167,3 @@ const AddClass = () => {
 };
 
 export default AddClass;
-
-/* "courseName": "Intermediate German",
-    "instructorName": "Johannes Schmidt",
-    "instructorEmail": "johannes.schmidt@example.com",
-    "instructorImgUrl": "https://i.ibb.co/5cYfrbP/johannes-schmidt.jpg",
-    "availableSeats": 10,
-    "price": 250,
-    "enrolledStudents": 8,
-    "classImg": "https://i.ibb.co/CmtpNs6/class-2.jpg",
-    "classDetails": "This course is suitable for students with some basic knowledge of German. Expand your vocabulary, improve your grammar skills, and engage in conversations to enhance your fluency in German." */
