@@ -1,7 +1,8 @@
 import { AiOutlineEdit } from 'react-icons/ai';
 
 const MyClassRow = ({ item, refetch }) => {
-  const { courseName, status } = item;
+  const { courseName, status, feedback } = item;
+  console.log(item.feedback);
   return (
     <div className="grid grid-cols-6 pt-6 gap-3">
       <div className="col-span-2 flex justify-center items-center">
@@ -23,7 +24,7 @@ const MyClassRow = ({ item, refetch }) => {
       </div>
       <div className="flex justify-center items-center">
         <p className="capitalize font-roboto font-medium text-[#4361ee]">
-          {status === 'denied' ? 'Denied ' : status === 'approved' ? ' ' : ' '}
+          {status === 'denied' && feedback ? `${feedback}` : ` `}
         </p>
       </div>
       <div className="flex justify-center items-center">

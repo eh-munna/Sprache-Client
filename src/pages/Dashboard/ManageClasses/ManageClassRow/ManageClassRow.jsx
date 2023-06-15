@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const ManageClassRow = ({ singleClass, refetch }) => {
@@ -16,28 +17,27 @@ const ManageClassRow = ({ singleClass, refetch }) => {
   } = singleClass;
 
   const approveClass = (id) => {
-    axios
-      .patch(`https://sprache-server.vercel.app/approve/${id}`)
-      .then((res) => {
-        if (res.data.modifiedCount) {
-          toast.success(`Class is approved`, {
-            position: 'top-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-          });
-        }
+    axios.patch(`http://localhost:5000/approve/${id}`).then((res) => {
+      if (res.data.modifiedCount) {
         refetch();
-        setBtnDisabled(true);
-      });
+        toast.success(`Class is approved`, {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+      }
+      setBtnDisabled(true);
+    });
   };
   const denyClass = (id) => {
-    axios.patch(`https://sprache-server.vercel.app/deny/${id}`).then((res) => {
+    axios.patch(`http://localhost:5000/deny/${id}`).then((res) => {
       if (res.data.modifiedCount) {
+        refetch();
         toast.success(`Class is denied`, {
           position: 'top-center',
           autoClose: 2000,
@@ -49,10 +49,14 @@ const ManageClassRow = ({ singleClass, refetch }) => {
           theme: 'light',
         });
       }
-      refetch();
+
       setBtnDisabled(true);
     });
   };
+
+  // if (status === 'approved') {
+  //   setBtnDisabled(true);
+  // }
   return (
     <div className="grid grid-cols-8 pt-6 gap-3">
       <div className="flex flex-col">
@@ -89,23 +93,22 @@ const ManageClassRow = ({ singleClass, refetch }) => {
         </p>
         <button
           onClick={() => approveClass(_id)}
-          disabled={btnDisabled}
+          disabled={status === 'approved' || (status === 'denied' && true)}
           className="font-[roboto] bg-[#7371fc] rounded-full p-1 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]"
         >
           approve
         </button>
         <button
           onClick={() => denyClass(_id)}
-          disabled={btnDisabled}
+          disabled={status === 'approved' || (status === 'denied' && true)}
           className="font-[roboto] bg-[#7371fc] rounded-full p-1 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]"
         >
           deny
         </button>
-        <button
-          onClick={() => denyClass(_id)}
-          className="font-[roboto] bg-[#7371fc] rounded-full p-1 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]"
-        >
-          feedback
+        <button className="font-[roboto] bg-[#7371fc] rounded-full p-1 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]">
+          <Link to="/dashboard/feedback" state={singleClass}>
+            feedback
+          </Link>
         </button>
       </div>
     </div>

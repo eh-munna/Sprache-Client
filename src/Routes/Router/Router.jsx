@@ -21,6 +21,7 @@ import Dashboard from '../../pages/Dashboard/Dashboard';
 import InstructorHome from '../../pages/Dashboard/InstructorHome/InstructorHome';
 import Payment from '../../pages/Dashboard/Payment/Payment';
 import PaymentHistory from '../../pages/Dashboard/Payment/PaymentHistory/PaymentHistory';
+import Feedback from '../../pages/Dashboard/Feedback/Feedback';
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'feedback',
+        element: (
+          <AdminRoute>
+            <Feedback />
           </AdminRoute>
         ),
       },

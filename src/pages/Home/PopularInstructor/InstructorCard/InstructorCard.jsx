@@ -24,10 +24,10 @@ const InstructorCard = ({ classItem }) => {
             />
           </div>
           <div className="rounded-b-md p-2 flex flex-col justify-center items-center">
-            <h3 className="text-xl font-bold font-[archivo] text-[#5a189a]">
+            <h3 className="text-lg md:text-xl font-bold font-[archivo] text-[#5a189a]">
               {instructorName}
             </h3>
-            <p className="text-[#4361ee] font-[roboto] font-medium capitalize">
+            <p className="text-[#4361ee] text-sm md:text-base font-[roboto] font-medium capitalize">
               {courseName} Teacher
             </p>
           </div>
