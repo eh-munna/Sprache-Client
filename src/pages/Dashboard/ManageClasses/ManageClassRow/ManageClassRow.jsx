@@ -16,25 +16,27 @@ const ManageClassRow = ({ singleClass, refetch }) => {
   } = singleClass;
 
   const approveClass = (id) => {
-    axios.patch(`http://localhost:5000/approve/${id}`).then((res) => {
-      if (res.data.modifiedCount) {
-        toast.success(`Class is approved`, {
-          position: 'top-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
-      }
-      refetch();
-      setBtnDisabled(true);
-    });
+    axios
+      .patch(`https://sprache-server.vercel.app/approve/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          toast.success(`Class is approved`, {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        }
+        refetch();
+        setBtnDisabled(true);
+      });
   };
   const denyClass = (id) => {
-    axios.patch(`http://localhost:5000/deny/${id}`).then((res) => {
+    axios.patch(`https://sprache-server.vercel.app/deny/${id}`).then((res) => {
       if (res.data.modifiedCount) {
         toast.success(`Class is denied`, {
           position: 'top-center',
