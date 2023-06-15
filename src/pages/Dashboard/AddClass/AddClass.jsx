@@ -32,7 +32,7 @@ const AddClass = () => {
     } = data;
 
     axios
-      .post(`http://localhost:5000/add-class`, {
+      .post(`https://sprache-server.vercel.app/add-class`, {
         courseName: courseName,
         classImg: classImg,
         availableSeats: parseFloat(availableSeats),

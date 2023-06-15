@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Heading from '../../components/Heading';
 import useLoadAll from '../../hooks/useLoadAll';
 import useTitleChange from '../../TitleChange/TitleChange';
@@ -8,14 +7,6 @@ import SingleClassCard from './SingleClassCard/SingleClassCard';
 
 const Classes = () => {
   const [allClasses, refetch] = useLoadAll();
-  // const [disabled, setDisabled] = useState(true);
-
-  // const [targetUser] = useUser();
-  // console.log(targetUser._id);
-
-  // if (!targetUser.studentRole) {
-  //   setDisabled(true);
-  // }
 
   useTitleChange('Sprache | Classes');
   return (

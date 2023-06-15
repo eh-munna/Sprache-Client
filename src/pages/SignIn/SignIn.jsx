@@ -55,7 +55,7 @@ const SignIn = () => {
       .then((result) => {
         const loggedUser = result.user;
         axios
-          .post(`http://localhost:5000/users`, {
+          .post(`https://sprache-server.vercel.app/users`, {
             name: loggedUser?.displayName,
             email: loggedUser?.email,
             studentRole: true,

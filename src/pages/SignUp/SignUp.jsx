@@ -51,7 +51,7 @@ const SignUp = () => {
           // storing user information to database
 
           axios
-            .post(`http://localhost:5000/users`, {
+            .post(`https://sprache-server.vercel.app/users`, {
               name: name,
               email: email,
               studentRole: true,

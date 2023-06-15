@@ -9,7 +9,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
 
-const SingleClassCard = ({ singleClass, refetch }) => {
+const SingleClassCard = ({ singleClass }) => {
   const [axiosSecure] = useAxiosSecure();
   const location = useLocation();
   const navigate = useNavigate();
