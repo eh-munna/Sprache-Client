@@ -5,14 +5,14 @@ import useAuth from './useAuth';
 const useInstructorClass = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const { data: instructorClass } = useQuery({
+  const { data: instructorClass, refetch } = useQuery({
     queryKey: ['instructorClass', user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/instructor-class/${user?.email}`);
       return res.data;
     },
   });
-  return [instructorClass];
+  return [instructorClass, refetch];
 };
 
 export default useInstructorClass;

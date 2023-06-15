@@ -19,6 +19,7 @@ import UserHome from '../../pages/Dashboard/UserHome/UserHome';
 import AdminHome from '../../pages/Dashboard/AdminHome/AdminHome';
 import Dashboard from '../../pages/Dashboard/Dashboard';
 import InstructorHome from '../../pages/Dashboard/InstructorHome/InstructorHome';
+import Payment from '../../pages/Dashboard/Payment/Payment';
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: 'my-enrolled-classes',
         element: <MyEnrolledClasses />,
+      },
+      {
+        path: 'payment',
+        element: <Payment />,
       },
 
       // admin routes
