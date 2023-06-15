@@ -57,7 +57,7 @@ const SignUp = () => {
               studentRole: true,
               adminRole: false,
               instructorRole: false,
-              userPhotUrl: photoUrl,
+              userPhotoUrl: photoUrl,
             })
             .then((res) => {
               if (res.data.insertedId) {

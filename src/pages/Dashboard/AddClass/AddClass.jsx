@@ -22,14 +22,7 @@ const AddClass = () => {
   } = useForm();
 
   const addClass = (data) => {
-    const {
-      courseName,
-      classImg,
-      availableSeats,
-      price,
-      classDetails,
-      instructorImgUrl,
-    } = data;
+    const { courseName, classImg, availableSeats, price, classDetails } = data;
 
     axios
       .post(`http://localhost:5000/add-class`, {
@@ -40,7 +33,7 @@ const AddClass = () => {
         instructorName: user?.displayName,
         instructorEmail: user?.email,
         classDetails: classDetails,
-        instructorImgUrl: instructorImgUrl,
+        instructorImgUrl: user?.photoURL,
         enrolledStudents: 0,
         status: 'pending',
       })
@@ -96,17 +89,6 @@ const AddClass = () => {
             />
           </div>
           {errors.classImg && (
-            <p className="text-red-500">Please enter a valid url</p>
-          )}
-          <div>
-            <input
-              type="url"
-              {...register('instructorImgUrl', { required: true })}
-              placeholder="Valid image URL for instructor profile picture"
-              className="w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
-            />
-          </div>
-          {errors.instructorImgUrl && (
             <p className="text-red-500">Please enter a valid url</p>
           )}
           <div>

@@ -14,7 +14,7 @@ const Instructors = () => {
       </h4>
       <Heading>The language teaching experts</Heading>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 grid-flow-dense grid-rows-1">
         {instructors?.map((singleInstructor) => (
           <SIngleInstructor
             key={singleInstructor._id}

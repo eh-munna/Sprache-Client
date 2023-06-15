@@ -87,25 +87,25 @@ const ManageClassRow = ({ singleClass, refetch }) => {
           {price}
         </p>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 text-center">
         <p className="capitalize font-roboto font-medium text-[#4361ee]">
           {status}
         </p>
         <button
           onClick={() => approveClass(_id)}
           disabled={status === 'approved' || (status === 'denied' && true)}
-          className="font-[roboto] bg-[#7371fc] rounded-full p-1 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]"
+          className="font-[roboto] bg-[#7371fc] rounded-full md:py-1 md:px-3 flex flex-col items-center hover:bg-[#3c096c] text-base text-[#fff] disabled:cursor-not-allowed disabled:opacity-75"
         >
           approve
         </button>
         <button
           onClick={() => denyClass(_id)}
           disabled={status === 'approved' || (status === 'denied' && true)}
-          className="font-[roboto] bg-[#7371fc] rounded-full p-1 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]"
+          className="font-[roboto] bg-[#7371fc] rounded-full md:py-1 md:px-3 flex flex-col items-center hover:bg-[#3c096c] text-base text-[#fff] disabled:cursor-not-allowed disabled:opacity-75"
         >
           deny
         </button>
-        <button className="font-[roboto] bg-[#7371fc] rounded-full p-1 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]">
+        <button className="font-[roboto] bg-[#7371fc] rounded-full md:py-1 md:px-3 flex flex-col items-center hover:bg-[#3c096c] text-base text-[#fff] disabled:cursor-not-allowed disabled:opacity-75">
           <Link to="/dashboard/feedback" state={singleClass}>
             feedback
           </Link>

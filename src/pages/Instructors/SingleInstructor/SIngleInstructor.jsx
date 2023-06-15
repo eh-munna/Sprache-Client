@@ -1,16 +1,20 @@
 import { TfiEmail } from 'react-icons/tfi';
+import useAuth from '../../../hooks/useAuth';
 const SIngleInstructor = ({ singleInstructor }) => {
   const { userPhotoUrl, name, instructorEmail } = singleInstructor;
+  const { user } = useAuth();
+  console.log(user);
+  // console.log(userPhotoUrl);
   return (
-    <div className="shadow-xl rounded-b-lg">
+    <div className="shadow-xl rounded-b-lg flex flex-col justify-between">
       <div>
         <img
-          className="max-w-full object-cover rounded-t-lg w-full h-52"
+          className="max-w-full rounded-t-lg w-full object-cover max-h-96"
           src={userPhotoUrl}
           alt=""
         />
       </div>
-      <div className="p-4">
+      <div className="p-4 flex flex-col justify-between">
         <h3 className="font-archivo font-bold text-[#5a189a] text-xl">
           {name}
         </h3>

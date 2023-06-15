@@ -1,10 +1,7 @@
-import { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const UsersRow = ({ user, idx, refetch }) => {
-  const [isAdminDisabled, setAdminDisabled] = useState(false);
-  const [isInstructorDisabled, setInstructorDisabled] = useState(false);
   const { _id, name, adminRole, instructorRole, email } = user;
 
   const makeAdmin = (id) => {
@@ -23,7 +20,6 @@ const UsersRow = ({ user, idx, refetch }) => {
         });
       }
     });
-    setAdminDisabled(true);
   };
 
   // making instructor
@@ -47,7 +43,6 @@ const UsersRow = ({ user, idx, refetch }) => {
           });
         }
       });
-    setInstructorDisabled(true);
   };
 
   return (
@@ -61,16 +56,16 @@ const UsersRow = ({ user, idx, refetch }) => {
       <div className="font-medium font-[roboto] text-base text-[#7371fc] col-span-2 flex flex-col md:flex-row gap-1 md:gap-3 justify-center items-center">
         <button
           onClick={() => makeAdmin(_id)}
-          disabled={isAdminDisabled}
-          className="font-[roboto] bg-[#7371fc] rounded-full py-1 px-2 md:px-4 hover:bg-[#3c096c] text-sm md:text-base text-[#fff]"
+          disabled={adminRole}
+          className="font-[roboto] bg-[#7371fc] rounded-full py-1 px-2 md:px-4 hover:bg-[#3c096c] text-sm md:text-base text-[#fff] disabled:cursor-not-allowed disabled:opacity-75"
         >
           {adminRole ? 'Admin' : 'Make Admin'}
         </button>
 
         <button
           onClick={() => makeInstructor(_id)}
-          disabled={isInstructorDisabled}
-          className="font-[roboto] bg-[#7371fc] rounded-full py-1 px-2 md:px-4 hover:bg-[#3c096c] text-sm md:text-base text-[#fff]"
+          disabled={instructorRole}
+          className="font-[roboto] bg-[#7371fc] rounded-full py-1 px-2 md:px-4 hover:bg-[#3c096c] text-sm md:text-base text-[#fff] disabled:cursor-not-allowed disabled:opacity-75"
         >
           {instructorRole ? 'Instructor' : 'Make Instructor'}
         </button>
