@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 import useAuth from './useAuth';
 
+let axiosSecure;
+axiosSecure = axios.create({
+  baseURL: 'http://localhost:5000',
+});
 const useAxiosSecure = () => {
   const { userLogOut } = useAuth();
   const navigate = useNavigate();
-  let axiosSecure;
 
-  axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
-  });
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem('user-access-token');
@@ -30,8 +30,8 @@ const useAxiosSecure = () => {
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
         ) {
-          userLogOut();
-          navigate('/sign-in');
+          // userLogOut();
+          // navigate('/sign-in');
         }
         return Promise.reject(error);
       }

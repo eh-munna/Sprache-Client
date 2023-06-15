@@ -10,12 +10,11 @@ const Payment = () => {
   const location = useLocation();
   const item = location?.state;
   const price = parseFloat(item?.price.toFixed(2));
-  console.log(price);
   return (
     <div>
       <Heading>Please Pay</Heading>
       <Elements stripe={stripePromise}>
-        <CheckoutForm price={price}></CheckoutForm>
+        <CheckoutForm price={price} item={item}></CheckoutForm>
       </Elements>
     </div>
   );

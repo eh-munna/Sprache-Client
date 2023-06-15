@@ -5,8 +5,11 @@ import useGetInstructor from '../../../hooks/useGetInstructor';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import useAuth from '../../../hooks/useAuth';
 const AddClass = () => {
   const [getInstructor] = useGetInstructor();
+
+  const { user } = useAuth();
   const instructorName = getInstructor?.name;
   const instructorEmail = getInstructor?.instructorEmail;
   const {
@@ -24,9 +27,8 @@ const AddClass = () => {
       classImg,
       availableSeats,
       price,
-      instructorName,
-      instructorEmail,
       classDetails,
+      instructorImgUrl,
     } = data;
 
     axios
@@ -35,9 +37,11 @@ const AddClass = () => {
         classImg: classImg,
         availableSeats: parseFloat(availableSeats),
         price: parseFloat(price),
-        instructorName: instructorName,
-        instructorEmail: instructorEmail,
+        instructorName: user?.displayName,
+        instructorEmail: user?.email,
         classDetails: classDetails,
+        instructorImgUrl: instructorImgUrl,
+        enrolledStudents: 0,
         status: 'pending',
       })
       .then((res) => {
@@ -96,21 +100,26 @@ const AddClass = () => {
           )}
           <div>
             <input
+              type="url"
+              {...register('instructorImgUrl', { required: true })}
+              placeholder="Valid image URL for instructor profile picture"
+              className="w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
+            />
+          </div>
+          {errors.instructorImgUrl && (
+            <p className="text-red-500">Please enter a valid url</p>
+          )}
+          <div>
+            <input
               readOnly
-              defaultValue={instructorName}
-              {...register('instructorName', {
-                instructorName: instructorName,
-              })}
+              defaultValue={user?.displayName}
               className="w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
           </div>
           <div>
             <input
               readOnly
-              defaultValue={instructorEmail}
-              {...register('instructorEmail', {
-                instructorEmail: instructorEmail,
-              })}
+              defaultValue={user?.email}
               className=" w-full md:w-3/4 placeholder:text-[#4361ee] border-b border-b-[#4361ee] focus:outline-none focus:border-b-[#3c096c] text-[#4361ee] p-2"
             />
           </div>

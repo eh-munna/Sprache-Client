@@ -1,8 +1,10 @@
 import useAuth from '../../../hooks/useAuth';
 import useBooked from '../../../hooks/useBooked';
+import useEnrolled from '../../../hooks/useEnrolled';
 
 const UserHome = () => {
   const [booked] = useBooked();
+  const [enrolled] = useEnrolled();
   const { user } = useAuth();
   return (
     <>
@@ -23,7 +25,7 @@ const UserHome = () => {
           <h2 className="text-2xl  text-center font-[archivo]">
             Enrolled Classes
           </h2>
-          <p className="pt-8 font-[roboto] text-xl">-</p>
+          <p className="pt-8 font-[roboto] text-xl">{enrolled?.length}</p>
         </div>
       </div>
     </>

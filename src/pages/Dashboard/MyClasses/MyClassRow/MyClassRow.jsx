@@ -1,5 +1,4 @@
 import { AiOutlineEdit } from 'react-icons/ai';
-import { MdOutlineFeedback } from 'react-icons/md';
 
 const MyClassRow = ({ item, refetch }) => {
   const { courseName, status } = item;

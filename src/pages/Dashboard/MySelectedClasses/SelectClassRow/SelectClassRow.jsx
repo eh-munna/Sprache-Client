@@ -1,6 +1,27 @@
 import { AiFillCreditCard, AiOutlineDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-const SelectClassRow = ({ book, idx }) => {
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
+const SelectClassRow = ({ refetch, book, idx }) => {
+  const [axiosSecure] = useAxiosSecure();
+  const deleteClass = (bookedId) => {
+    axiosSecure.delete(`/delete-book/${bookedId}`).then((res) => {
+      if (res.data.deletedCount > 0) {
+        toast.success('Class is removed', {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        });
+        refetch();
+      }
+    });
+  };
+
   const { _id, courseName, bookedId } = book;
   return (
     <div className="grid grid-cols-5 pt-6 gap-3">
@@ -16,7 +37,7 @@ const SelectClassRow = ({ book, idx }) => {
       </div>
       <div className="flex justify-center items-center">
         <span className="font-[roboto] text-[#7371fc] text-xl">
-          <button>
+          <button onClick={() => deleteClass(bookedId)}>
             <AiOutlineDelete />
           </button>
         </span>
