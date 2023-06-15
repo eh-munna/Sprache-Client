@@ -1,12 +1,12 @@
 import { TfiEmail } from 'react-icons/tfi';
 const SIngleInstructor = ({ singleInstructor }) => {
-  const { name, instructorEmail } = singleInstructor;
+  const { userPhotoUrl, name, instructorEmail } = singleInstructor;
   return (
     <div className="shadow-xl rounded-b-lg">
       <div>
         <img
           className="max-w-full object-cover rounded-t-lg w-full h-52"
-          src=""
+          src={userPhotoUrl}
           alt=""
         />
       </div>

@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 import useAuth from './useAuth';
 
-let axiosSecure;
-axiosSecure = axios.create({
-  baseURL: 'https://sprache-server.vercel.app',
-});
 const useAxiosSecure = () => {
+  let axiosSecure;
+  axiosSecure = axios.create({
+    baseURL: 'http://localhost:5000',
+  });
   const { userLogOut } = useAuth();
   const navigate = useNavigate();
 
@@ -30,8 +30,8 @@ const useAxiosSecure = () => {
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
         ) {
-          // userLogOut();
-          // navigate('/sign-in');
+          userLogOut();
+          navigate('/sign-in');
         }
         return Promise.reject(error);
       }

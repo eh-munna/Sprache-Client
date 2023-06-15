@@ -10,6 +10,7 @@ import {
   FaServer,
   FaUsers,
 } from 'react-icons/fa';
+import { MdPayment } from 'react-icons/md';
 import useAdmin from '../../hooks/useAdmin';
 import useInstructor from '../../hooks/useInstructor';
 
@@ -93,6 +94,10 @@ const Dashboard = () => {
                   <Link to="/dashboard/my-enrolled-classes">
                     My Enrolled Classes
                   </Link>
+                </li>
+                <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">
+                  <MdPayment />
+                  <Link to="/dashboard/payment-history">Payment History</Link>
                 </li>
               </>
             )}
