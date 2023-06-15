@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Heading from '../../components/Heading';
-import useLoadClasses from '../../hooks/useLoadClasses';
+import useLoadAll from '../../hooks/useLoadAll';
 import useTitleChange from '../../TitleChange/TitleChange';
 import SingleClassCard from './SingleClassCard/SingleClassCard';
 // import useUser from '../../hooks/useUser';
 // import useUser from '../../hooks/useUser';
 
 const Classes = () => {
-  const [classes] = useLoadClasses();
+  const [allClasses, refetch] = useLoadAll();
   // const [disabled, setDisabled] = useState(true);
 
   // const [targetUser] = useUser();
@@ -26,12 +26,13 @@ const Classes = () => {
       <Heading>Choose a program that suits you</Heading>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {classes.map((singleClass) => (
+        {allClasses?.map((singleClass) => (
           <SingleClassCard
             key={singleClass._id}
             singleClass={singleClass}
             // disabled={disabled}
             className="rounded-lg"
+            refetch={refetch}
           ></SingleClassCard>
         ))}
       </div>

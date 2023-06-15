@@ -3,7 +3,7 @@ const SchedulesCard = ({ item }) => {
 
   return (
     <>
-      <div className="flex flex-col shadow-xl rounded-lg bg-slate-100">
+      <div className="flex flex-col shadow-xl rounded-lg ">
         <div className="relative ">
           <img className="max-w-full rounded-t-lg" src={classImg} alt="" />
           <div className="bg-slate-800 rounded-t-lg w-full h-full absolute top-0 opacity-60"></div>

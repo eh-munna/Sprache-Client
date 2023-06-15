@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useInstructorClass from '../../../hooks/useInstructorClass';
 import MyClassRow from './MyClassRow/MyClassRow';
 

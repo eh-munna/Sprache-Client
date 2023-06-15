@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const InstructorCard = ({ classItem }) => {
-  const { instructorName, classImg, courseName } = classItem;
+  const { instructorName, courseName, instructorImgUrl } = classItem;
 
   return (
     <>
@@ -19,7 +19,7 @@ const InstructorCard = ({ classItem }) => {
           <div className="">
             <img
               className="max-w-full rounded-full w-64 h-64"
-              src={classImg}
+              src={instructorImgUrl}
               alt=""
             />
           </div>
