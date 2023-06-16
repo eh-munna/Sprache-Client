@@ -25,7 +25,7 @@ const HomeSlider = () => {
     slides: images.length,
     loop: true,
     detailsChanged(s) {
-      const new_opacities = s.track.details.slides.map(
+      const new_opacities = s.track.details.slides?.map(
         (slide) => slide.portion
       );
       setOpacities(new_opacities);
@@ -35,7 +35,7 @@ const HomeSlider = () => {
     slides: textContent.length,
     loop: true,
     detailsChanged(s) {
-      const new_opacities = s.track.details.slides.map(
+      const new_opacities = s.track.details.slides?.map(
         (slide) => slide.portion
       );
       setOpacities(new_opacities);
@@ -43,7 +43,7 @@ const HomeSlider = () => {
   });
   return (
     <div ref={sliderRef} className={`fader `}>
-      {images.map((src, idx) => (
+      {images?.map((src, idx) => (
         <div
           key={idx}
           className="fader__slide bg-black text-white"
@@ -53,7 +53,7 @@ const HomeSlider = () => {
             <img className="opacity-30" src={src} />
           </div>
           <div ref={textRef}>
-            {textContent.map((text, idx) => (
+            {textContent?.map((text, idx) => (
               <h2
                 key={idx}
                 className="fader__slide flex justify-center items-center text-lg md:text-4xl font-[archivo] text-gray-200 px-2"

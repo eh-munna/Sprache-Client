@@ -1,10 +1,10 @@
-import axios from 'axios';
-import { useState } from 'react';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const ManageClassRow = ({ singleClass, refetch }) => {
-  const [btnDisabled, setBtnDisabled] = useState(false);
+  const [axiosSecure] = useAxiosSecure();
   const {
     _id,
     courseName,
@@ -17,7 +17,7 @@ const ManageClassRow = ({ singleClass, refetch }) => {
   } = singleClass;
 
   const approveClass = (id) => {
-    axios.patch(`http://localhost:5000/approve/${id}`).then((res) => {
+    axiosSecure.patch(`/approve/${id}`).then((res) => {
       if (res.data.modifiedCount) {
         refetch();
         toast.success(`Class is approved`, {
@@ -31,11 +31,10 @@ const ManageClassRow = ({ singleClass, refetch }) => {
           theme: 'light',
         });
       }
-      setBtnDisabled(true);
     });
   };
   const denyClass = (id) => {
-    axios.patch(`http://localhost:5000/deny/${id}`).then((res) => {
+    axiosSecure.patch(`/deny/${id}`).then((res) => {
       if (res.data.modifiedCount) {
         refetch();
         toast.success(`Class is denied`, {
@@ -49,8 +48,6 @@ const ManageClassRow = ({ singleClass, refetch }) => {
           theme: 'light',
         });
       }
-
-      setBtnDisabled(true);
     });
   };
 

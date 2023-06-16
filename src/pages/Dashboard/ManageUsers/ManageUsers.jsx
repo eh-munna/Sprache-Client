@@ -24,7 +24,7 @@ const ManageUsers = () => {
         </div>
       </div>
       <div>
-        {users.map((user, idx) => (
+        {users?.map((user, idx) => (
           <UsersRow idx={idx} key={user._id} user={user} refetch={refetch} />
         ))}
       </div>

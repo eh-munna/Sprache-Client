@@ -22,7 +22,7 @@ const SelectClassRow = ({ refetch, book, idx }) => {
     });
   };
 
-  const { _id, courseName, bookedId } = book;
+  const { courseName, bookedId } = book;
   return (
     <div className="grid grid-cols-5 pt-6 gap-3">
       <div className="flex justify-center items-center">

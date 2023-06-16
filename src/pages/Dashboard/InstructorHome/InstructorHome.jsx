@@ -8,7 +8,6 @@ const InstructorHome = () => {
   const approved = instructorClass?.filter(
     (item) => item.status === 'approved'
   );
-  console.log(pending?.length);
   return (
     <>
       <h3 className="text-4xl text-[#5a189a] font-[archivo] pb-8">

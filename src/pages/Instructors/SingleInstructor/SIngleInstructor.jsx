@@ -1,10 +1,7 @@
 import { TfiEmail } from 'react-icons/tfi';
-import useAuth from '../../../hooks/useAuth';
 const SIngleInstructor = ({ singleInstructor }) => {
   const { userPhotoUrl, name, instructorEmail } = singleInstructor;
-  const { user } = useAuth();
-  console.log(user);
-  // console.log(userPhotoUrl);
+
   return (
     <div className="shadow-xl rounded-b-lg flex flex-col justify-between">
       <div>

@@ -34,7 +34,7 @@ const MySelectedClasses = () => {
         </div>
       </div>
       <div>
-        {booked.map((book, idx) => (
+        {booked?.map((book, idx) => (
           <SelectClassRow
             idx={idx}
             key={book._id}

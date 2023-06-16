@@ -9,7 +9,7 @@ const PopularInstructor = () => {
     <div className="pt-6 pb-0 md:pt-20 md:pb-0">
       <Heading>{`Meet our teachers`}</Heading>
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-5">
-        {popular.map((classItem) => (
+        {popular?.map((classItem) => (
           <InstructorCard
             key={classItem._id}
             classItem={classItem}

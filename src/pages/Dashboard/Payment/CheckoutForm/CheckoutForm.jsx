@@ -5,8 +5,6 @@ import useAuth from '../../../../hooks/useAuth';
 import useBooked from '../../../../hooks/useBooked';
 import { toast } from 'react-toastify';
 
-// TODO: remove console log
-
 const CheckoutForm = ({ price, item }) => {
   const { user } = useAuth();
   const [, refetch] = useBooked();
@@ -67,15 +65,15 @@ const CheckoutForm = ({ price, item }) => {
     }
     console.log('payment-intent', paymentIntent);
     setProcessing(false);
-    if (paymentIntent.status === 'succeeded') {
-      setTransactionId(paymentIntent.id);
+    if (paymentIntent?.status === 'succeeded') {
+      setTransactionId(paymentIntent?.id);
 
       const payment = {
         studentEmail: user?.email,
         courseName,
         courseId: _id,
         bookedId: bookedId,
-        transactionId: paymentIntent.id,
+        transactionId: paymentIntent?.id,
         price,
       };
       axiosSecure.post('/payments', payment).then((res) => {

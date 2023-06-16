@@ -15,14 +15,14 @@ const useUser = () => {
     queryKey: ['targetUsers', user?.email],
     queryFn: async () => {
       const response = await axios.get(
-        `http://localhost:5000/users?email=${user?.email}`
+        `https://sprache-server.vercel.app/users?email=${user?.email}`
       );
       return response.data;
     },
   });
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/user/${user?.email}`)
+  //   fetch(`https://sprache-server.vercel.app/user/${user?.email}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setTargetUser(data);

@@ -7,7 +7,7 @@ import useAuth from './useAuth';
 const useAxiosSecure = () => {
   let axiosSecure;
   axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://sprache-server.vercel.app',
   });
   const { userLogOut } = useAuth();
   const navigate = useNavigate();

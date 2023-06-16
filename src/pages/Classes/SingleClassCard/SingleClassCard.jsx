@@ -122,8 +122,8 @@ const SingleClassCard = ({ singleClass }) => {
         </p>
         <button
           onClick={() => bookClass(singleClass)}
-          disabled={isAdmin || isInstructor}
-          className="w-full font-[roboto] bg-[#7371fc] rounded-full py-1 px-3 hover:bg-[#3c096c] text-base md:text-lg text-[#fff]"
+          disabled={isAdmin || isInstructor || availableSeats === 0}
+          className="w-full font-[roboto] bg-[#7371fc] rounded-full py-1 px-3 hover:bg-[#3c096c] text-base md:text-lg text-[#fff] disabled:cursor-not-allowed disabled:opacity-75"
         >
           Book
         </button>

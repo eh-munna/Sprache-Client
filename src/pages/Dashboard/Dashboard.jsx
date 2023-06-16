@@ -18,11 +18,6 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
 
-  // TODO : isInstructor
-
-  // TODO: load the admin data from the database.......
-  // const isAdmin = true;
-
   const commonNavOptions = (
     <>
       <li className="flex items-center gap-3 text-[#4361ee] font-medium text-lg font-[roboto]">

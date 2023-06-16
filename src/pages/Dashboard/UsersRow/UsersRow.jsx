@@ -1,31 +1,34 @@
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const UsersRow = ({ user, idx, refetch }) => {
+  const [axiosSecure] = useAxiosSecure();
   const { _id, name, adminRole, instructorRole, email } = user;
 
   const makeAdmin = (id) => {
-    axios.patch(`http://localhost:5000/users/admin/${id}`).then((res) => {
-      if (res.data.modifiedCount) {
-        refetch();
-        toast.success(`${name} is an admin now`, {
-          position: 'top-center',
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-        });
-      }
-    });
+    axiosSecure
+      .patch(`https://sprache-server.vercel.app/users/admin/${id}`)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          refetch();
+          toast.success(`${name} is an admin now`, {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          });
+        }
+      });
   };
 
   // making instructor
   const makeInstructor = (id) => {
-    axios
-      .patch(`http://localhost:5000/users/instructor/${id}`, {
+    axiosSecure
+      .patch(`https://sprache-server.vercel.app/users/instructor/${id}`, {
         email,
       })
       .then((res) => {
